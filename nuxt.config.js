@@ -58,4 +58,14 @@ export default {
     }),
     { path: '/api', handler: '~/api/index.js' }
   ],
+
+  // Google Analytics Configuration
+  googleAnalytics: {
+    id: 'UA-96470754-12'
+  },
+
+  // Sitemap Configuration
+  sitemap: {
+    hostname: 'https://cvwizard.io'
+  }
 }
