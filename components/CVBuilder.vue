@@ -4,7 +4,7 @@
       <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-2 md:grid-cols-4">
         <div class="p-4">
           <div class="flex justify-center">
-            <div class="bg-blue-500 h-8 w-8 rounded-full mb-2"></div>
+            <div class="h-8 w-8 cursor-pointer rounded-full mb-2" :style="{ 'background-color': settings.color.hex }" @click="showColorPicker = true"></div>
           </div>
           <span class="uppercase text-white">Color</span>
         </div>
@@ -21,10 +21,10 @@
           <span class="uppercase text-white">Typography</span>
         </div>
         <div class="p-4">
-          <div class="text-white">
-            <span>A</span>
-            <span class="text-2xl">A</span>
-            <span class="text-4xl">A</span>
+          <div>
+            <span class="cursor-pointer" :style="{ 'color': settings.textSize === 'small' ? settings.color.hex : '#ffffff' }" @click="settings.textSize = 'small'">A</span>
+            <span class="cursor-pointer text-2xl" :style="{ 'color': settings.textSize === 'medium' ? settings.color.hex : '#ffffff' }" @click="settings.textSize = 'medium'">A</span>
+            <span class="cursor-pointer text-4xl" :style="{ 'color': settings.textSize === 'large' ? settings.color.hex : '#ffffff' }" @click="settings.textSize = 'large'">A</span>
           </div>
           <span class="uppercase text-white">Text size</span>
         </div>
@@ -55,17 +55,31 @@
             </div>
           </div>
           <div class="w-3/4">
-            <input class="block font-bold text-6xl w-full" type="text" placeholder="Your name" />
+            <input class="block font-bold text-6xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Your name" />
             <input class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Your profession or specialty" />
           </div>
         </div>
       </div>
     </div>
+    <Modal heading="Pick a color" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showColorPicker = false" @cancel="showColorPicker = false" v-show="showColorPicker">
+      <vue-color v-model="settings.color" :color="settings.color"  />
+    </Modal>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CVBuilder'
+  name: 'CVBuilder',
+  data() {
+    return {
+      showColorPicker: false,
+      settings: {
+        color: {
+          hex: '#a600ff'
+        },
+        textSize: 'medium'
+      }
+    }
+  }
 }
 </script>

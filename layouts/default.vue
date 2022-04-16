@@ -124,10 +124,6 @@ header, footer {
   }
 }
 
-.cta-button-light {
-  color: #a600ff;
-}
-
 .cta-link-primary {
   @apply font-bold text-white rounded-md shadow-md px-4 py-2 flex justify-center;
   background-color: #a600ff;
