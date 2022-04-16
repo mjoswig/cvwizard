@@ -69,5 +69,10 @@ export default {
   // Sitemap Configuration
   sitemap: {
     hostname: 'https://cvwizard.io'
+  },
+
+  // Axios Configuration
+  axios: {
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://cvwizard.io' : 'http://localhost:3000'
   }
 }
