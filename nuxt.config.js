@@ -5,7 +5,7 @@ export default {
   target: 'server',
 
   // SSR (https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-ssr)
-  ssr: false,
+  ssr: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
