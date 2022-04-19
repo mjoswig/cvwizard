@@ -22,15 +22,15 @@
         </div>
         <div class="p-4">
           <div>
-            <span class="cursor-pointer" :style="{ 'color': settings.textSize === 'small' ? settings.color.hex : '#ffffff' }" @click="settings.textSize = 'small'">A</span>
-            <span class="cursor-pointer text-2xl" :style="{ 'color': settings.textSize === 'medium' ? settings.color.hex : '#ffffff' }" @click="settings.textSize = 'medium'">A</span>
-            <span class="cursor-pointer text-4xl" :style="{ 'color': settings.textSize === 'large' ? settings.color.hex : '#ffffff' }" @click="settings.textSize = 'large'">A</span>
+            <span class="cursor-default" :class="{ 'inactive-text-size-option': settings.textSize !== 'small' }" :style="{ 'color': settings.textSize === 'small' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'small'">A</span>
+            <span class="cursor-default text-2xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'medium' }" :style="{ 'color': settings.textSize === 'medium' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'medium'">A</span>
+            <span class="cursor-default text-4xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'large' }" :style="{ 'color': settings.textSize === 'large' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'large'">A</span>
           </div>
           <span class="uppercase text-white">Text size</span>
         </div>
         <div class="p-4">
           <div class="flex justify-center text-white mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-grid-1x2-fill" viewBox="0 0 16 16" @click="showSectionManagement = true">
               <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
             </svg>
           </div>
@@ -53,6 +53,10 @@
                 <span class="font-bold text-gray-400 uppercase">Select your picture</span>
               </div>
             </div>
+            <div class="mt-8" v-show="settings.sectionVisibility.profile">
+              <input class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Profile" v-model="cvData.profile.title" />
+              <input class="mt-2 block text-lg w-full" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.description" />
+            </div>
           </div>
           <div class="w-3/4">
             <input class="block font-bold text-6xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Your name" />
@@ -64,6 +68,64 @@
     <Modal heading="Pick a color" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showColorPicker = false" @cancel="showColorPicker = false" v-show="showColorPicker">
       <vue-color v-model="settings.color" :color="settings.color"  />
     </Modal>
+    <Modal :is-large="true" heading="Manage sections" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showSectionManagement = false" @cancel="showSectionManagement = false" v-show="showSectionManagement">
+      <div class="grid md:grid-cols-2 gap-4 text-left w-full">
+        <div>
+          <div>
+            <Toggle class="mb-2 uppercase" label="Picture" v-model="settings.sectionVisibility.picture" />
+            <Toggle class="uppercase" label="Profile" v-model="settings.sectionVisibility.profile" />
+          </div>
+          <hr class="mt-4 mb-2" />
+          <div>
+            <b class="uppercase">Personal info</b>
+            <Toggle class="my-2 uppercase" label="Address" v-model="settings.sectionVisibility.address" />
+            <Toggle class="mb-2 uppercase" label="Birth date" v-model="settings.sectionVisibility.birthDate" />
+            <Toggle class="mb-2 uppercase" label="Nationality" v-model="settings.sectionVisibility.nationality" />
+            <Toggle class="uppercase" label="Marital status" v-model="settings.sectionVisibility.maritalStatus" />
+          </div>
+          <hr class="mt-4 mb-2" />
+          <div>
+            <b class="uppercase">Contact</b>
+            <Toggle class="my-2 uppercase" label="Email" v-model="settings.sectionVisibility.email" />
+            <Toggle class="mb-2 uppercase" label="Phone number" v-model="settings.sectionVisibility.phoneNumber" />
+            <Toggle class="mb-2 uppercase" label="Website" v-model="settings.sectionVisibility.website" />
+            <Toggle class="mb-2 uppercase" label="LinkedIn" v-model="settings.sectionVisibility.linkedIn" />
+            <Toggle class="mb-2 uppercase" label="Facebook" v-model="settings.sectionVisibility.facebook" />
+            <Toggle class="mb-2 uppercase" label="Twitter" v-model="settings.sectionVisibility.twitter" />
+            <Toggle class="mb-2 uppercase" label="GitHub" v-model="settings.sectionVisibility.gitHub" />
+            <Toggle class="uppercase" label="Instagram" v-model="settings.sectionVisibility.instagram" />
+          </div>
+        </div>
+        <div>
+          <div>
+            <Toggle class="mb-2 uppercase" label="Name" v-model="settings.sectionVisibility.name" />
+            <Toggle class="mb-2 uppercase" label="Profession" v-model="settings.sectionVisibility.profession" />
+            <Toggle class="mb-2 uppercase" label="Work experience" v-model="settings.sectionVisibility.workExperience" />
+            <Toggle class="uppercase" label="Education" v-model="settings.sectionVisibility.education" />
+          </div>
+          <hr class="mt-4 mb-2" />
+          <div>
+            <b class="uppercase">Skills</b>
+            <p>List your professional and personal skills in up to 3 different styles.</p>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <Toggle class="uppercase" label="Simple 1" v-model="settings.sectionVisibility.simple1" />
+              <Toggle class="uppercase" label="Simple 2" v-model="settings.sectionVisibility.simple2" />
+              <Toggle class="uppercase" label="Circles" v-model="settings.sectionVisibility.circles" />
+              <Toggle class="uppercase" label="Bars" v-model="settings.sectionVisibility.bars" />
+            </div>
+          </div>
+          <hr class="mt-4 mb-2" />
+          <div>
+            <b class="uppercase">Additional info</b>
+            <p>Ideal for listing hobbies, languages, references, certificates or awards.</p>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <Toggle class="uppercase" label="List 1" v-model="settings.sectionVisibility.list1" />
+              <Toggle class="uppercase" label="List 2" v-model="settings.sectionVisibility.list2" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -73,13 +135,56 @@ export default {
   data() {
     return {
       showColorPicker: false,
+      showSectionManagement: false,
       settings: {
         color: {
-          hex: '#a600ff'
+          hex: '#009ce0'
         },
-        textSize: 'medium'
+        textSize: 'medium',
+        sectionVisibility: {
+          picture: true,
+          profile: true,
+          address: true,
+          birthDate: false,
+          nationality: false,
+          maritalStatus: false,
+          email: true,
+          phoneNumber: true,
+          website: false,
+          linkedIn: false,
+          facebook: false,
+          twitter: false,
+          gitHub: false,
+          instagram: false,
+          name: true,
+          profession: true,
+          workExperience: true,
+          education: true,
+          simple1: false,
+          simple2: false,
+          circles: false,
+          bars: false,
+          list1: false,
+          list2: false
+        }
+      },
+      cvData: {
+        profile: {
+          title: 'Profile',
+          description: ''
+        }
       }
     }
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+.inactive-text-size-option {
+  @apply cursor-pointer;
+
+  &:hover {
+    color: #ffffff !important;
+  }
+}
+</style>
