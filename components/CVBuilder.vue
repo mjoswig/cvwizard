@@ -41,7 +41,7 @@
     <div class="overflow-scroll">
       <div class="bg-white p-12 shadow-lg w-full" style="width: 1340px;">
         <div class="flex items-center">
-          <div class="w-1/4">
+          <div class="w-1/4" v-show="settings.sectionVisibility.picture">
             <div class="bg-gray-100 cursor-pointer h-64 w-64 flex items-center justify-center rounded-full">
               <div>
                 <div class="flex justify-center mb-1">
@@ -53,14 +53,31 @@
                 <span class="font-bold text-gray-400 uppercase">Select your picture</span>
               </div>
             </div>
-            <div class="mt-8" v-show="settings.sectionVisibility.profile">
-              <input class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Profile" v-model="cvData.profile.title" />
-              <input class="mt-2 block text-lg w-full" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.description" />
+          </div>
+          <div class="w-3/4">
+            <TextField class="block font-bold text-6xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Your name" v-show="settings.sectionVisibility.name" />
+            <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Your profession or specialty" v-show="settings.sectionVisibility.profession" />
+          </div>
+        </div>
+        <div class="flex items-center mt-8">
+          <div class="w-1/4">
+            <div v-show="settings.sectionVisibility.profile">
+              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Profile" v-model="cvData.profile.label" />
+              <TextField class="block text-lg w-full" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.value" />
+            </div>
+            <div class="mt-4" v-show="settings.sectionVisibility.birthDate || settings.sectionVisibility.address">
+              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Personal Details" v-model="cvData.personalDetailsLabel" />
+            </div>
+            <div class="mt-2" v-show="settings.sectionVisibility.birthDate">
+              <TextField class="block font-bold text-2xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Birth date" v-model="cvData.birthDate.label" />
+              <TextField class="block text-lg w-full" type="text" placeholder="Enter your birth date" v-model="cvData.birthDate.value" />
+            </div>
+            <div class="mt-2" v-show="settings.sectionVisibility.address">
+              <TextField class="block font-bold text-2xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Address" v-model="cvData.address.label" />
+              <TextField class="block text-lg w-full" type="text" placeholder="Enter your address" v-model="cvData.address.value" />
             </div>
           </div>
           <div class="w-3/4">
-            <input class="block font-bold text-6xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Your name" />
-            <input class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Your profession or specialty" />
           </div>
         </div>
       </div>
@@ -77,7 +94,7 @@
           </div>
           <hr class="mt-4 mb-2" />
           <div>
-            <b class="uppercase">Personal info</b>
+            <b class="uppercase">Personal details</b>
             <Toggle class="my-2 uppercase" label="Address" v-model="settings.sectionVisibility.address" />
             <Toggle class="mb-2 uppercase" label="Birth date" v-model="settings.sectionVisibility.birthDate" />
             <Toggle class="mb-2 uppercase" label="Nationality" v-model="settings.sectionVisibility.nationality" />
@@ -170,8 +187,17 @@ export default {
       },
       cvData: {
         profile: {
-          title: 'Profile',
-          description: ''
+          label: 'Profile',
+          value: ''
+        },
+        personalDetailsLabel: 'Personal details',
+        birthDate: {
+          label: 'Birth date',
+          value: ''
+        },
+        address: {
+          label: 'Address',
+          value: ''
         }
       }
     }
