@@ -59,8 +59,8 @@
             <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Your profession or specialty" v-show="settings.sectionVisibility.profession" />
           </div>
         </div>
-        <div class="flex items-center mt-8">
-          <div class="w-1/4">
+        <div class="flex mt-8">
+          <div class="w-1/4 mt-1">
             <div v-show="settings.sectionVisibility.profile">
               <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Profile" v-model="cvData.profile.label" />
               <TextField class="block text-lg w-full" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.value" />
@@ -153,6 +153,83 @@
             </div>
           </div>
           <div class="w-3/4">
+            <div class="mb-4" v-show="settings.sectionVisibility.workExperience">
+              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Work experience" v-model="cvData.workExperience.label" />
+              <div class="flex flex-col space-y-4 w-full">
+                <div class="group relative ml-3" v-for="(position, indexWx) in cvData.workExperience.positions" :key="indexWx">
+                  <div class="absolute right-0 flex space-x-4 opacity-0 group-hover:opacity-100">
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                      </svg>
+                    </div>
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" v-show="key > 0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex space-x-2 items-center">
+                    <div>
+                      <div class="h-4 w-4 rounded-full" :style="{ 'background-color': settings.color.hex }"></div>
+                    </div>
+                    <div class="w-3/4">
+                      <TextField class="block font-bold text-2xl w-full"  :style="{ 'color': settings.color.hex }" type="text" placeholder="Position" v-model="cvData.workExperience.positions[indexWx].position" />
+                    </div>
+                  </div>
+                  <div class="flex space-x-2 items-center">
+                    <div>
+                      <div class="h-4 w-4"></div>
+                    </div>
+                    <div class="w-full">
+                      <div class="flex justify-between w-full">
+                        <TextField class="block font-bold uppercase w-full" type="text" placeholder="Employer" v-model="cvData.workExperience.positions[indexWx].employer" />
+                        <TextField class="block text-right" type="text" placeholder="From – Until" v-model="cvData.workExperience.positions[indexWx].timeSpan" />
+                      </div>
+                      <TextField class="block w-full" type="text" placeholder="In this text field your can describe your duties. Try to focus on accomplishments that serve as concrete examples to the type of problems you can solve to your future employer." v-model="cvData.workExperience.positions[indexWx].description" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-show="settings.sectionVisibility.education">
+              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Education" v-model="cvData.education.label" />
+              <div class="flex flex-col space-y-4 w-full">
+                <div class="group relative ml-3" v-for="(position, indexEd) in cvData.education.degrees" :key="indexEd">
+                  <div class="absolute right-0 flex space-x-4 opacity-0 group-hover:opacity-100">
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                      </svg>
+                    </div>
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" v-show="key > 0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex space-x-2 items-center">
+                    <div>
+                      <div class="h-4 w-4 rounded-full" :style="{ 'background-color': settings.color.hex }"></div>
+                    </div>
+                    <div class="w-full">
+                      <TextField class="block font-bold text-2xl w-3/4"  :style="{ 'color': settings.color.hex }" type="text" placeholder="Degree" v-model="cvData.education.degrees[indexEd].degree" />
+                    </div>
+                  </div>
+                  <div class="flex space-x-2 items-center">
+                    <div>
+                      <div class="h-4 w-4"></div>
+                    </div>
+                    <div class="w-full">
+                      <div class="flex justify-between w-full">
+                        <TextField class="block font-bold uppercase w-full" type="text" placeholder="School" v-model="cvData.education.degrees[indexEd].degree" />
+                        <TextField class="block text-right" type="text" placeholder="From – Until" v-model="cvData.education.degrees[indexEd].timeSpan" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -306,6 +383,27 @@ export default {
         },
         instagram: {
           value: ''
+        },
+        workExperience: {
+          label: 'Work experience',
+          positions: [
+            {
+              position: '',
+              employer: '',
+              description: '',
+              timeSpan: ''
+            }
+          ]
+        },
+        education: {
+          label: 'Education',
+          degrees: [
+            {
+              degree: '',
+              school: '',
+              timeSpan: ''
+            }
+          ]
         }
       }
     }
