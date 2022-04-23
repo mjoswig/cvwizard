@@ -158,12 +158,12 @@
               <div class="flex flex-col space-y-4 w-full">
                 <div class="group relative ml-3" v-for="(position, indexWx) in cvData.workExperience.positions" :key="indexWx">
                   <div class="absolute right-0 flex space-x-4 opacity-0 group-hover:opacity-100">
-                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full">
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" @click="addWorkExperience">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                       </svg>
                     </div>
-                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" v-show="key > 0">
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" v-show="indexWx > 0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
                       </svg>
@@ -198,11 +198,11 @@
                 <div class="group relative ml-3" v-for="(position, indexEd) in cvData.education.degrees" :key="indexEd">
                   <div class="absolute right-0 flex space-x-4 opacity-0 group-hover:opacity-100">
                     <div class="bg-gray-300 cursor-pointer p-2 rounded-full">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16" @click="addEducation">
                         <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                       </svg>
                     </div>
-                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" v-show="key > 0">
+                    <div class="bg-gray-300 cursor-pointer p-2 rounded-full" v-show="indexEd > 0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
                       </svg>
@@ -406,6 +406,23 @@ export default {
           ]
         }
       }
+    }
+  },
+  methods: {
+    addWorkExperience() {
+      this.cvData.workExperience.positions.push({
+        position: '',
+        employer: '',
+        description: '',
+        timeSpan: ''
+      })
+    },
+    addEducation() {
+      this.cvData.education.degrees.push({
+        degree: '',
+        school: '',
+        timeSpan: ''
+      })
     }
   }
 }
