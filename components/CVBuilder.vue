@@ -42,31 +42,34 @@
       <div class="bg-white p-12 shadow-lg w-full" style="width: 1340px;">
         <div class="flex items-center">
           <div class="w-1/4" v-show="settings.sectionVisibility.picture">
-            <div class="bg-gray-100 cursor-pointer h-64 w-64 flex items-center justify-center rounded-full">
-              <div>
-                <div class="flex justify-center mb-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
-                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                    <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
-                  </svg>
+            <label for="cv-picture">
+              <div class="profile-picture-placeholder bg-gray-100 cursor-pointer h-64 w-64 flex items-center justify-center rounded-full">
+                <div v-show="profilePictureFileBase64 === null">
+                  <div class="flex justify-center mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                      <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                      <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                    </svg>
+                  </div>
+                  <span class="font-bold text-gray-400 uppercase">Select your picture</span>
                 </div>
-                <span class="font-bold text-gray-400 uppercase">Select your picture</span>
               </div>
-            </div>
+            </label>
+            <input class="hidden" id="cv-picture" type="file" @change="changeProfilePicture" />
           </div>
           <div class="w-3/4">
-            <TextField class="block font-bold text-6xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Your name" v-show="settings.sectionVisibility.name" />
-            <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Your profession or specialty" v-show="settings.sectionVisibility.profession" />
+            <TextField class="block font-bold text-6xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Your name" v-model="cvData.name.value" v-show="settings.sectionVisibility.name" />
+            <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Your profession or specialty" v-model="cvData.profession.value" v-show="settings.sectionVisibility.profession" />
           </div>
         </div>
         <div class="flex mt-8">
           <div class="w-1/4 mt-1">
             <div v-show="settings.sectionVisibility.profile">
-              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Profile" v-model="cvData.profile.label" />
-              <TextField class="block text-lg w-full" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.value" />
+              <TextField name="profile-label" class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Profile" v-model="cvData.profile.label" />
+              <TextField name="profile-value" class="block text-lg w-full" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.value" />
             </div>
             <div class="mt-4" v-show="settings.sectionVisibility.birthDate || settings.sectionVisibility.nationality || settings.sectionVisibility.address || settings.sectionVisibility.maritalStatus">
-              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Personal details" v-model="cvData.personalDetailsLabel" />
+              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Personal details" v-model="cvData.personalDetails.label" />
             </div>
             <div class="mt-2" v-show="settings.sectionVisibility.birthDate">
               <TextField class="block font-bold text-2xl w-full" :style="{ 'color': settings.color.hex }" type="text" placeholder="Birth date" v-model="cvData.birthDate.label" />
@@ -85,7 +88,7 @@
               <TextField class="block text-lg w-full" type="text" placeholder="Enter your marital status" v-model="cvData.maritalStatus.value" />
             </div>
             <div class="mt-4" v-show="settings.sectionVisibility.email || settings.sectionVisibility.phoneNumber || settings.sectionVisibility.website || settings.sectionVisibility.linkedIn || settings.sectionVisibility.facebook || settings.sectionVisibility.twitter || settings.sectionVisibility.gitHub || settings.sectionVisibility.instagram">
-              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Contact" v-model="cvData.contactLabel" />
+              <TextField class="block font-bold text-2xl uppercase w-full" type="text" placeholder="Contact" v-model="cvData.contact.label" />
             </div>
             <div class="mt-4 flex items-center space-x-2 pl-2" v-show="settings.sectionVisibility.email">
               <div class="p-2 rounded-full" :style="{ 'background-color': settings.color.hex }">
@@ -303,6 +306,7 @@ export default {
   name: 'CVBuilder',
   data() {
     return {
+      profilePictureFileBase64: null,
       showColorPicker: false,
       showSectionManagement: false,
       settings: {
@@ -338,11 +342,19 @@ export default {
         }
       },
       cvData: {
+        name: {
+          value: ''
+        },
+        profession: {
+          value: ''
+        },
         profile: {
           label: 'Profile',
           value: ''
         },
-        personalDetailsLabel: 'Personal details',
+        personalDetails: {
+          label: 'Personal details'
+        },
         birthDate: {
           label: 'Birth date',
           value: ''
@@ -359,7 +371,9 @@ export default {
           label: 'Marital status',
           value: ''
         },
-        contactLabel: 'Contact',
+        contact: {
+          label: 'Contact'
+        },
         email: {
           value: ''
         },
@@ -423,6 +437,24 @@ export default {
         school: '',
         timeSpan: ''
       })
+    },
+    async getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = error => reject(error)
+      })
+    },
+    async changeProfilePicture(e) {
+      const files = e.target.files || e.dataTransfer.files
+      if (!files.length) return
+      const base64 = await this.getBase64(files[0])
+      this.profilePictureFileBase64 = base64
+
+      // quick'n dirty hack to dynamically display logo
+      const pictureStyle = `background-image: url(${this.profilePictureFileBase64}); background-position: center; background-size: cover; background-repeat: no-repeat;`
+      document.querySelector('.profile-picture-placeholder').style = pictureStyle
     }
   }
 }
