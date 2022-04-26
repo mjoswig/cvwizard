@@ -1,5 +1,5 @@
 <template>
-  <textarea class="p-2 resize-none" v-model="value" ref="textarea" rows="1" @focus="resize" @keyup="resize"></textarea>
+  <textarea class="p-2 resize-none overflow-hidden" v-model="value" ref="textarea" rows="1" @focus="resize" @keyup="resize"></textarea>
 </template>
 
 <script>
