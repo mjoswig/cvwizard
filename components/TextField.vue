@@ -5,13 +5,16 @@
 <script>
   export default {
     name: 'TextField',
-    props: ['value'],
+    props: ['textSize', 'value'],
     data() {
       return {
         inputValue: this.value
       }
     },
     watch: {
+      textSize() {
+        this.resize()
+      },
       inputValue() {
         this.$emit('input', this.inputValue)
       }
