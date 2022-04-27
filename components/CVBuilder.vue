@@ -9,14 +9,14 @@
           <span class="uppercase text-white">Color</span>
         </div>
         <div class="p-4">
-          <select class="block mb-1 p-2 w-full">
-            <option>Poppins</option>
-            <option>Nunito</option>
-            <option>Merriweather</option>
-            <option>Inconsolata</option>
-            <option>Karla</option>
-            <option>Fira Sans</option>
-            <option>Saira Semi Condensed</option>
+          <select class="block mb-1 p-2 w-full" v-model="settings.typography">
+            <option value="poppins">Poppins</option>
+            <option value="nunito">Nunito</option>
+            <option value="merriweather">Merriweather</option>
+            <option value="inconsolata">Inconsolata</option>
+            <option value="karla">Karla</option>
+            <option value="fira-sans">Fira Sans</option>
+            <option value="saira-semi-condensed">Saira Semi Condensed</option>
           </select>
           <span class="uppercase text-white">Typography</span>
         </div>
@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="overflow-scroll">
+    <div class="overflow-scroll" :class="fontClass">
       <div class="bg-white p-12 shadow-lg w-full" style="width: 1340px;">
         <div class="flex items-center">
           <div class="w-1/4" v-show="settings.sectionVisibility.picture">
@@ -195,7 +195,7 @@
                 </div>
               </div>
             </div>
-            <div v-show="settings.sectionVisibility.education">
+            <div class="mb-4" v-show="settings.sectionVisibility.education">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-lg': settings.textSize === 'small', 'text-2xl': settings.textSize === 'medium', 'text-4xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Education" v-model="cvData.education.label" />
               <div class="flex flex-col space-y-4 w-full">
                 <div class="group relative ml-3" v-for="(position, indexEd) in cvData.education.degrees" :key="indexEd">
@@ -232,6 +232,17 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="mb-4" v-show="settings.sectionVisibility.skills1">
+              <TextField class="block font-bold uppercase w-full" :class="{ 'text-lg': settings.textSize === 'small', 'text-2xl': settings.textSize === 'medium', 'text-4xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Skills 1" v-model="cvData.skills1.label" />
+              <div class="p-2">
+                <div v-for="(skill, index) in cvData.skills1.values" :key="index">
+                  <TagField :class="{ 'text-xs': settings.textSize === 'small', 'text-base': settings.textSize === 'medium', 'text-xl': settings.textSize === 'large' }" placeholder="Enter skill" v-model="cvData.skills1.values[index]" />
+                </div>
+              </div>
+            </div>
+            <div v-show="settings.sectionVisibility.skills2">
+              <TextField class="block font-bold uppercase w-full" :class="{ 'text-lg': settings.textSize === 'small', 'text-2xl': settings.textSize === 'medium', 'text-4xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Skills 2" v-model="cvData.skills2.label" />
             </div>
           </div>
         </div>
@@ -278,21 +289,10 @@
           <hr class="mt-4 mb-2" />
           <div>
             <b class="uppercase">Skills</b>
-            <p>List your professional and personal skills in up to 3 different styles.</p>
+            <p>List your professional and personal skills.</p>
             <div class="grid grid-cols-2 gap-4 mt-2">
-              <Toggle class="uppercase" label="Simple 1" v-model="settings.sectionVisibility.simple1" />
-              <Toggle class="uppercase" label="Simple 2" v-model="settings.sectionVisibility.simple2" />
-              <Toggle class="uppercase" label="Circles" v-model="settings.sectionVisibility.circles" />
-              <Toggle class="uppercase" label="Bars" v-model="settings.sectionVisibility.bars" />
-            </div>
-          </div>
-          <hr class="mt-4 mb-2" />
-          <div>
-            <b class="uppercase">Additional info</b>
-            <p>Ideal for listing hobbies, languages, references, certificates or awards.</p>
-            <div class="grid grid-cols-2 gap-4 mt-2">
-              <Toggle class="uppercase" label="List 1" v-model="settings.sectionVisibility.list1" />
-              <Toggle class="uppercase" label="List 2" v-model="settings.sectionVisibility.list2" />
+              <Toggle class="uppercase" label="Skills 1" v-model="settings.sectionVisibility.skills1" />
+              <Toggle class="uppercase" label="Skills 2" v-model="settings.sectionVisibility.skills2" />
             </div>
           </div>
         </div>
@@ -313,6 +313,7 @@ export default {
         color: {
           hex: '#009ce0'
         },
+        typography: 'poppins',
         textSize: 'medium',
         sectionVisibility: {
           picture: true,
@@ -333,10 +334,8 @@ export default {
           profession: true,
           workExperience: true,
           education: true,
-          simple1: false,
-          simple2: false,
-          circles: false,
-          bars: false,
+          skills1: false,
+          skills2: false,
           list1: false,
           list2: false
         }
@@ -418,7 +417,32 @@ export default {
               timeSpan: ''
             }
           ]
+        },
+        skills1: {
+          label: 'Skills',
+          values: [
+            'Enter skill'
+          ]
+        },
+        skills2: {
+          label: 'Skills',
+          values: [
+            'Enter skill'
+          ]
         }
+      }
+    }
+  },
+  computed: {
+    fontClass() {
+      return {
+        'poppins': this.settings.typography === 'poppins',
+        'nunito': this.settings.typography === 'nunito',
+        'merriweather': this.settings.typography === 'merriweather',
+        'inconsolata': this.settings.typography === 'inconsolata',
+        'karla': this.settings.typography === 'karla',
+        'fira-sans': this.settings.typography === 'fira-sans',
+        'saira-semi-condensed': this.settings.typography === 'saira-semi-condensed'
       }
     }
   },
@@ -473,5 +497,33 @@ export default {
   &:hover {
     color: #ffffff !important;
   }
+}
+
+.poppins {
+  font-family: 'Poppins';
+}
+
+.nunito {
+  font-family: 'Nunito';
+}
+
+.merriweather {
+  font-family: 'Merriweather';
+}
+
+.inconsolata {
+  font-family: 'Inconsolata';
+}
+
+.karla {
+  font-family: 'Karla';
+}
+
+.fira-sans {
+  font-family: 'Fira Sans';
+}
+
+.saira-semi-condensed {
+  font-family: 'Saira Semi Condensed';
 }
 </style>

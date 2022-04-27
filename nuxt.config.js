@@ -42,6 +42,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
     '@nuxtjs/google-analytics'
   ],
 
@@ -61,6 +62,19 @@ export default {
     }),
     { path: '/api', handler: '~/api/index.js' }
   ],
+
+  // Google Fonts Configuration
+  googleFonts: {
+    families: {
+      Poppins: true,
+      Nunito: true,
+      Merriweather: true,
+      Inconsolata: true,
+      Karla: true,
+      'Fira+Sans': true,
+      'Saira+Semi+Condensed': true
+    }
+  },
 
   // Google Analytics Configuration
   googleAnalytics: {
