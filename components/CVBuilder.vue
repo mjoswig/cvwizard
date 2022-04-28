@@ -340,7 +340,7 @@ export default {
       showSectionManagement: false,
       settings: {
         color: {
-          hex: '#4a90e2'
+          hex: '#009ce0'
         },
         typography: 'poppins',
         textSize: 'medium',

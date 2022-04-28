@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import { Sketch } from 'vue-color'
+import { Compact } from 'vue-color'
 
-Vue.component('vue-color', Sketch)
+Vue.component('vue-color', Compact)
