@@ -1,6 +1,6 @@
 {
   "name": "cvwizard-io",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -13,7 +13,10 @@
     "core-js": "^3.19.3",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "nuxt": "^2.15.8",
+    "nuxt-stripe-module": "^3.2.0",
     "redirect-ssl": "^3.0.0",
     "stripe": "^8.217.0",
     "vue": "^2.6.14",

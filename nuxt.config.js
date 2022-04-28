@@ -48,7 +48,13 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    [
+      'nuxt-stripe-module',
+      {
+        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

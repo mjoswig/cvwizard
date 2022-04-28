@@ -1,7 +1,9 @@
 <template>
   <div class="page-content">
-    <h1 class="text-purple-brand sm:text-center mb-4">Create a professional CV in 5 minutes</h1>
-    <p class="sm:text-center text-gray-400 text-lg mb-8">This website is still under construction. Please come back again later!</p>
+    <div class="mb-12">
+      <h1 class="text-purple-brand sm:text-center">Create a professional CV in 5 minutes</h1>
+      <p class="lg:hidden text-gray-400 sm:text-center text-xl mt-4">You will get the best user experience by visiting this website on a large device.</p>
+    </div>
     <CVBuilder />
   </div>
 </template>
