@@ -277,7 +277,7 @@
         </div>
       </div>
     </div>
-    <Modal heading="Pick a color" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showColorPicker = false" @cancel="showColorPicker = false" v-show="showColorPicker">
+    <Modal :is-large="false"  heading="Pick a color" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showColorPicker = false" @cancel="showColorPicker = false" v-show="showColorPicker">
       <vue-color v-model="settings.color" :color="settings.color"  />
     </Modal>
     <Modal :is-large="true" heading="Manage sections" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showSectionManagement = false" @cancel="showSectionManagement = false" v-show="showSectionManagement">
@@ -340,7 +340,7 @@ export default {
       showSectionManagement: false,
       settings: {
         color: {
-          hex: '#009ce0'
+          hex: '#4a90e2'
         },
         typography: 'poppins',
         textSize: 'medium',
