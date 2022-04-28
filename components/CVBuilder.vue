@@ -235,14 +235,43 @@
             </div>
             <div class="mb-4" v-show="settings.sectionVisibility.skills1">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-lg': settings.textSize === 'small', 'text-2xl': settings.textSize === 'medium', 'text-4xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Skills 1" v-model="cvData.skills1.label" />
-              <div class="p-2">
-                <div v-for="(skill, index) in cvData.skills1.values" :key="index">
+              <div class="flex flex-wrap p-2">
+                <div class="group relative mb-2 mr-2 w-max" v-for="(skill, index) in cvData.skills1.values" :key="index">
                   <TagField :class="{ 'text-xs': settings.textSize === 'small', 'text-base': settings.textSize === 'medium', 'text-xl': settings.textSize === 'large' }" placeholder="Enter skill" v-model="cvData.skills1.values[index]" />
+                  <div class="absolute mt-1 right-0 flex space-x-2 opacity-0 group-hover:opacity-100">
+                    <div class="bg-gray-300 cursor-pointer p-1 rounded-full" @click="addSkill('skills1')">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                      </svg>
+                    </div>
+                    <div class="bg-gray-300 cursor-pointer p-1 rounded-full" @click="removeSkill('skills1', index)" v-show="index > 0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div v-show="settings.sectionVisibility.skills2">
+            <div class="mb-4" v-show="settings.sectionVisibility.skills2">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-lg': settings.textSize === 'small', 'text-2xl': settings.textSize === 'medium', 'text-4xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Skills 2" v-model="cvData.skills2.label" />
+              <div class="flex flex-wrap p-2">
+                <div class="group relative mb-2 mr-2 w-max" v-for="(skill, index) in cvData.skills2.values" :key="index">
+                  <TagField :class="{ 'text-xs': settings.textSize === 'small', 'text-base': settings.textSize === 'medium', 'text-xl': settings.textSize === 'large' }" placeholder="Enter skill" v-model="cvData.skills2.values[index]" />
+                  <div class="absolute mt-1 right-0 flex space-x-2 opacity-0 group-hover:opacity-100">
+                    <div class="bg-gray-300 cursor-pointer p-1 rounded-full" @click="addSkill('skills2')">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                      </svg>
+                    </div>
+                    <div class="bg-gray-300 cursor-pointer p-1 rounded-full" @click="removeSkill('skills2', index)" v-show="index > 0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -334,10 +363,8 @@ export default {
           profession: true,
           workExperience: true,
           education: true,
-          skills1: false,
-          skills2: false,
-          list1: false,
-          list2: false
+          skills1: true,
+          skills2: false
         }
       },
       cvData: {
@@ -447,6 +474,12 @@ export default {
     }
   },
   methods: {
+    addSkill(skillGroup) {
+      this.cvData[skillGroup].values.push('Enter skill')
+    },
+    removeSkill(skillGroup, index) {
+      this.cvData[skillGroup].values.splice(index, 1)
+    },
     addWorkExperience() {
       this.cvData.workExperience.positions.push({
         position: '',
