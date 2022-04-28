@@ -38,9 +38,9 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center w-full overflow-scroll" :class="fontClass">
-      <div id="cv" class="bg-white shadow-lg w-full">
-        <div class="flex items-center">
+    <div class="flex justify-center overflow-scroll w-full" :class="fontClass">
+      <div id="cv" class="bg-white overflow-scroll shadow-lg w-full">
+        <div class="flex items-center w-full">
           <div class="mr-8" style="width: 7cm;" v-show="settings.sectionVisibility.picture">
             <label for="cv-picture">
               <div class="profile-picture-placeholder bg-gray-100 cursor-pointer h-48 w-48 flex items-center justify-center rounded-full">
@@ -156,7 +156,7 @@
             </div>
           </div>
           <div style="width: 14cm;">
-            <div class="mb-4" v-show="settings.sectionVisibility.workExperience">
+            <div v-show="settings.sectionVisibility.workExperience">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Work experience" v-model="cvData.workExperience.label" />
               <div class="flex flex-col w-full">
                 <div class="group relative ml-3" v-for="(position, indexWx) in cvData.workExperience.positions" :key="indexWx">
@@ -195,7 +195,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4" v-show="settings.sectionVisibility.education">
+            <div v-show="settings.sectionVisibility.education">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Education" v-model="cvData.education.label" />
               <div class="flex flex-col w-full">
                 <div class="group relative ml-3" v-for="(position, indexEd) in cvData.education.degrees" :key="indexEd">
@@ -233,7 +233,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4" v-show="settings.sectionVisibility.skills1">
+            <div v-show="settings.sectionVisibility.skills1">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Skills 1" v-model="cvData.skills1.label" />
               <div class="flex flex-wrap p-2">
                 <div class="group relative mb-2 mr-2 w-max" v-for="(skill, index) in cvData.skills1.values" :key="index">
@@ -253,7 +253,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-4" v-show="settings.sectionVisibility.skills2">
+            <div v-show="settings.sectionVisibility.skills2">
               <TextField class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Skills 2" v-model="cvData.skills2.label" />
               <div class="flex flex-wrap p-2">
                 <div class="group relative mb-2 mr-2 w-max" v-for="(skill, index) in cvData.skills2.values" :key="index">
