@@ -21,7 +21,7 @@
         <p>Copyright &copy; 2022 cvwizard.io - a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions Pte Ltd</a>. All rights reserved.</p>
       </footer>
     </div>
-    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $9.95" :confirmation-button-disabled="true" @confirm="download" @cancel="showDownloadModal = false" v-show="showDownloadModal">
+    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $9.95" :confirmation-button-disabled="true" :confirmation-button-loading="false" @confirm="download" @cancel="showDownloadModal = false" v-show="showDownloadModal">
       <h4 class="text-purple-brand text-center">Increase your chances of getting your dream job!</h4>
       <div class="flex flex-col items-center justify-center mt-8">
         <div class="font-bold uppercase text-sm text-white bg-red-700 p-2 rounded-md mb-4">
