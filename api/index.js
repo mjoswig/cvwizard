@@ -13,24 +13,18 @@ app.get('/', async (req, res) => {
   return res.status(200).send('API is ready')
 })
 
-// stripe checkout
-app.post('/stripe/checkout', async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    line_items: [{
-      price_data: {
-        currency: 'usd',
-        unit_amount: 999,
-        product_data: {
-          name: 'Professional CV from cvwizard.io'
-        },
-      },
-      quantity: 1
-    }],
-    mode: 'payment',
-    success_url: `https://cvwizard.io/download/`,
-    cancel_url: 'https://cvwizard.io/'
+app.post('/create-payment-intent', async (req, res) => {
+  // create a payment intent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 995,
+    currency: 'usd',
+    description: 'Professional CV from cvwizard.io',
+    payment_method_types: ['card']
   })
-  res.json(session)
+
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  })
 })
 
 module.exports = app

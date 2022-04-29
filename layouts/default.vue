@@ -15,13 +15,13 @@
         </div>
       </header>
       <main>
-        <nuxt />
+        <nuxt-child :is-downloading="isDownloading" />
       </main>
       <footer class="px-8 pb-8 pt-0 text-sm sm:text-center">
         <p>Copyright &copy; 2022 cvwizard.io - a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions Pte Ltd</a>. All rights reserved.</p>
       </footer>
     </div>
-    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $9.95" :confirmation-button-disabled="true" :confirmation-button-loading="false" @confirm="download" @cancel="showDownloadModal = false" v-show="showDownloadModal">
+    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $9.95" :confirmation-button-disabled="!canPay || downloadModalLoading" :confirmation-button-loading="downloadModalLoading" @confirm="processPayment()" @cancel="showDownloadModal = false" v-show="showDownloadModal">
       <h4 class="text-purple-brand text-center">Increase your chances of getting your dream job!</h4>
       <div class="flex flex-col items-center justify-center mt-8">
         <div class="font-bold uppercase text-sm text-white bg-red-700 p-2 rounded-md mb-4">
@@ -66,12 +66,91 @@ import{ jsPDF } from 'jspdf'
 export default {
   data() {
     return {
-      showDownloadModal: false
+      isDownloading: false,
+      showDownloadModal: false,
+      downloadModalLoading: false,
+      clientSecret: null,
+      card: null
+    }
+  },
+  computed: {
+    canPay() {
+      return this.clientSecret && this.card
     }
   },
   methods: {
-    download () {
-      if(process.client) {
+    async initStripe() {
+      if (this.$stripe) {
+        const response = await fetch('/api/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        })
+        const { clientSecret } = await response.json()
+        this.clientSecret = clientSecret
+
+        if (clientSecret) {
+          const elements = this.$stripe.elements()
+          const card = elements.create('card', {})
+          card.mount('#card-element')
+          this.card = card
+        }
+      }
+    },
+    async processPayment() {
+      this.downloadModalLoading = true
+      this.isDownloading = true
+
+      const { error } = await this.$stripe.confirmCardPayment(this.clientSecret, {
+        payment_method: {
+          card: this.card
+        }
+      })
+
+      if (error) {
+        if (error.type === 'card_error' || error.type === 'validation_error') {
+          alert(error.message)
+        } else {
+          alert('An unexpected error occured.')
+        }
+
+        this.downloadModalLoading = false
+        this.isDownloading = false
+      } else {
+        this.download()
+
+        this.downloadModalLoading = false
+        this.isDownloading = false
+        this.showDownloadModal = false
+      }
+    },
+    async checkStatus() {
+      const clientSecret = new URLSearchParams(window.location.search).get(
+        'payment_intent_client_secret'
+      )
+
+      if (!clientSecret) {
+        return
+      }
+
+      const { paymentIntent } = await this.$stripe.retrievePaymentIntent(clientSecret)
+
+      switch (paymentIntent.status) {
+        case 'succeeded':
+          alert('Payment succeeded!')
+          break
+        case 'processing':
+          alert('Your payment is processing.')
+          break
+        case 'requires_payment_method':
+          alert('Your payment was not successful, please try again.')
+          break
+        default:
+          showMessage('Something went wrong.')
+          break
+      }
+    },
+    download() {
+      if (process.client) {
         const doc = new jsPDF({
           orientation: 'p',
           unit: 'px',
@@ -92,11 +171,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$stripe) {
-      const elements = this.$stripe.elements()
-      const card = elements.create('card', {})
-      card.mount('#card-element')
-    }
+    this.initStripe()
   }
 }
 </script>
