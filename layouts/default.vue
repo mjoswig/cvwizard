@@ -160,7 +160,8 @@ export default {
 
         html2canvas(document.querySelector('#cv'), {
           width: doc.internal.pageSize.getWidth(),
-          height: doc.internal.pageSize.getHeight()
+          height: doc.internal.pageSize.getHeight(),
+          scale: 2
         }).then((canvas) => {
           const img = canvas.toDataURL('image/png')
 
