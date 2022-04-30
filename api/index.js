@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
 app.post('/create-payment-intent', async (req, res) => {
   // create a payment intent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 995,
+    amount: 495,
     currency: 'usd',
     description: 'Professional CV from cvwizard.io',
     payment_method_types: ['card']

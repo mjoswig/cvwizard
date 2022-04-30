@@ -21,7 +21,7 @@
         <p>Copyright &copy; 2022 cvwizard.io - a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions Pte Ltd</a>. All rights reserved.</p>
       </footer>
     </div>
-    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $9.95" :confirmation-button-disabled="!canPay || downloadModalLoading" :confirmation-button-loading="downloadModalLoading" @confirm="processPayment()" @cancel="showDownloadModal = false" v-show="showDownloadModal">
+    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $4.95" :confirmation-button-disabled="!canPay || downloadModalLoading" :confirmation-button-loading="downloadModalLoading" @confirm="processPayment()" @cancel="showDownloadModal = false" v-show="showDownloadModal">
       <h4 class="text-purple-brand text-center">Increase your chances of getting your dream job!</h4>
       <div class="flex flex-col items-center justify-center mt-8">
         <div class="font-bold uppercase text-sm text-white bg-red-700 p-2 rounded-md mb-4">
@@ -31,14 +31,14 @@
           <div class="flex text-gray-400 crossed">
             <div class="flex items-center space-x-2">
               <span class="text-2xl">$</span>
-              <span class="font-bold text-4xl">11</span>
+              <span class="font-bold text-4xl">6</span>
             </div>
             <sup class="text-xl">.95</sup>
           </div>
           <div class="flex">
             <div class="flex items-center space-x-2">
               <span class="text-2xl">$</span>
-              <span class="font-bold text-4xl">9</span>
+              <span class="font-bold text-4xl">4</span>
             </div>
             <sup class="text-xl">.95</sup>
           </div>
