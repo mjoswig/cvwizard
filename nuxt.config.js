@@ -9,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Professional CV Builder - cvwizard.io',
+    title: 'cvwizard.io - Professional CV Builder',
     htmlAttrs: {
       lang: 'en'
     },
