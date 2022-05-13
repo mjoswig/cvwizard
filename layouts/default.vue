@@ -18,7 +18,7 @@
         <nuxt-child :is-downloading="isDownloading" />
       </main>
       <footer class="px-8 pb-8 pt-0 text-sm sm:text-center">
-        <p>Copyright &copy; 2022 cvwizard.io - a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions Pte Ltd</a>. All rights reserved.</p>
+        <p>Copyright &copy; 2022 cvwizard.io – a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions Pte Ltd</a>. All rights reserved.</p>
       </footer>
     </div>
     <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $4.95" :confirmation-button-disabled="!canPay || downloadModalLoading" :confirmation-button-loading="downloadModalLoading" @confirm="processPayment()" @cancel="showDownloadModal = false" v-show="showDownloadModal">
