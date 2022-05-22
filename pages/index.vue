@@ -5,6 +5,11 @@
       <p class="lg:hidden text-gray-400 sm:text-center text-xl mt-4">You will get the best user experience by visiting this website on a large device.</p>
     </div>
     <CVBuilder :is-downloading="isDownloading" />
+    <div class="flex justify-center w-full">
+      <div style="width: 21cm;">
+        <adsbygoogle class="mt-12" />
+      </div>
+    </div>
   </div>
 </template>
 
