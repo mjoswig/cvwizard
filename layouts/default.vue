@@ -19,12 +19,12 @@
       </main>
       <footer class="flex flex-col items-center px-8 pb-8 pt-2 text-sm">
         <div class="flex items-center space-x-4 mb-4">
-          <div class="pt-5">
+          <div>
             <a href="https://www.producthunt.com/posts/cvwizard-io?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cvwizard&#0045;io" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=344605&theme=light" alt="cvwizard&#0046;io - Professional&#0032;CV&#0032;Builder | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
           </div>
           <div>
             <a href="https://paypal.me/joswigsolutionssg" target="_blank">
-              <img class="w-36 h-auto" src="@/assets/images/paypal-donate.png" />
+              <img class="w-32 h-auto" src="@/assets/images/paypal-donate.png" />
             </a>
           </div>
         </div>
