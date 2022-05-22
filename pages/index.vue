@@ -6,7 +6,7 @@
     </div>
     <CVBuilder :is-downloading="isDownloading" />
     <div class="flex justify-center w-full">
-      <div style="width: 21cm;">
+      <div class="w-full">
         <adsbygoogle class="mt-12" />
       </div>
     </div>
