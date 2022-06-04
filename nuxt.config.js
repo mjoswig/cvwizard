@@ -84,7 +84,8 @@ export default {
       Inconsolata: true,
       Karla: true,
       'Fira+Sans': true,
-      'Saira+Semi+Condensed': true
+      'Saira+Semi+Condensed': true,
+      'Open+Sans': true
     }
   },
 
