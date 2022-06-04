@@ -208,7 +208,7 @@ export default {
 
 <style lang="postcss">
 html {
-  font-family: "Tauri", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   word-spacing: 1px;
