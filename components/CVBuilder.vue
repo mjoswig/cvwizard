@@ -10,12 +10,12 @@
         </div>
         <div class="p-4">
           <select class="block mb-1 p-2 w-full" v-model="settings.typography">
-            <option value="poppins">Poppins</option>
-            <option value="nunito">Nunito</option>
-            <option value="merriweather">Merriweather</option>
+            <option value="fira-sans">Fira Sans</option>
             <option value="inconsolata">Inconsolata</option>
             <option value="karla">Karla</option>
-            <option value="fira-sans">Fira Sans</option>
+            <option value="merriweather">Merriweather</option>
+            <option value="nunito">Nunito</option>
+            <option value="poppins">Poppins</option>
             <option value="saira-semi-condensed">Saira Semi Condensed</option>
           </select>
           <span class="uppercase text-white">Typography</span>
@@ -343,7 +343,7 @@ export default {
         color: {
           hex: '#009ce0'
         },
-        typography: 'poppins',
+        typography: 'fira-sans',
         textSize: 'medium',
         sectionVisibility: {
           picture: true,
