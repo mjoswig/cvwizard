@@ -54,12 +54,6 @@ export default {
       {
         publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
       }
-    ],
-    [
-      '@nuxtjs/google-adsense',
-      {
-        id: 'ca-pub-8905784477674250'
-      }
     ]
   ],
 
