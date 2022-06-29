@@ -37,7 +37,7 @@
           </div>
         </div>
         <div>
-          <p>Copyright &copy; 2022 cvwizard.io – a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions Pte Ltd</a>. All rights reserved.</p>
+          <p>Copyright &copy; 2022 cvwizard.io – a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions UG</a>. All rights reserved.</p>
         </div>
       </footer>
     </div>
