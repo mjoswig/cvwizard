@@ -26,8 +26,8 @@
       </footer>
     </div>
     <Modal v-show="showDonationModal" heading="Thank you for your download!" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showDonationModal = false">
-      <p class="mb-4">If you'd like to support this project, feel free to donate a coffee through my Wishlist Page:</p>
-      <p><a href="https://wishlistpage.com/manueljoswig?wish=4c35a4f4-f691-409d-8add-0da94c18f8b4">https://wishlistpage.com/manueljoswig?wish=4c35a4f4-f691-409d-8add-0da94c18f8b4</a></p>
+      <p class="mb-4">Are you happy with the result? Please support the website with a coffee donation:</p>
+      <p><a href="https://wishlistpage.com/manueljoswig?wish=4c35a4f4-f691-409d-8add-0da94c18f8b4" target="_blank">https://wishlistpage.com/manueljoswig?wish=4c35a4f4-f691-409d-8add-0da94c18f8b4</a></p>
     </Modal>
   </div>
 </template>

@@ -1,6 +1,6 @@
 {
   "name": "cvwizard",
-  "version": "1.5.6",
+  "version": "1.5.8",
   "private": true,
   "scripts": {
     "dev": "nuxt",

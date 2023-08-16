@@ -68,7 +68,7 @@ export default {
 
   // Google Analytics Configuration
   googleAnalytics: {
-    id: ''
+    id: 'G-SLD1FGYGSZ'
   },
 
   // Sitemap Configuration
