@@ -72,11 +72,11 @@ export default {
         html2canvas(document.querySelector('#cv'), {
           width: doc.internal.pageSize.getWidth(),
           height: doc.internal.pageSize.getHeight(),
-          scale: 2
+          scale: 4
         }).then((canvas) => {
-          const img = canvas.toDataURL('image/png')
+          const img = canvas.toDataURL('image/jpeg')
 
-          doc.addImage(img, 'PNG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight())
+          doc.addImage(img, 'JPEG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight())
           doc.save('cv.pdf')
         })
       }
