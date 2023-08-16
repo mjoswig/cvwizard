@@ -2,17 +2,11 @@
   <div id="app" class="app flex justify-center">
     <div class="wrapper w-full">
       <header>
-        <div class="p-4 flex items-center justify-between">
+        <div class="p-8 flex items-center justify-between">
           <div>
-            <nuxt-link to="/"><img class="w-24 h-auto" src="@/assets/images/logo.png" /></nuxt-link>
+            <nuxt-link to="/"><img class="w-20 h-auto" src="@/assets/images/logo.png" /></nuxt-link>
           </div>
-          <div class="flex items-center space-x-6">
-            <a class="flex items-center space-x-2 font-bold" href="https://templates.cvwizard.io/" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
-              <span>CV Templates for Microsoft Word</span>
-            </a>
+          <div>
             <Btn :is-loading="isDownloading" @click="processDownload">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
                 <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
@@ -26,55 +20,14 @@
         <nuxt-child :is-downloading="isDownloading" />
       </main>
       <footer class="flex flex-col items-center px-8 pb-8 pt-2 text-sm">
-        <div class="flex items-center space-x-4 mb-4">
-          <div>
-            <a href="https://www.producthunt.com/posts/cvwizard-io?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cvwizard&#0045;io" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=344605&theme=light" alt="cvwizard&#0046;io - Professional&#0032;CV&#0032;Builder | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-          </div>
-          <div>
-            <a href="https://paypal.me/joswigsolutionssg" target="_blank">
-              <img class="w-32 h-auto" src="@/assets/images/paypal-donate.png" />
-            </a>
-          </div>
-        </div>
         <div>
-          <p>Copyright &copy; 2022 cvwizard.io – a venture by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions UG</a>. All rights reserved.</p>
+          <p>Copyright &copy; {{ copyrightYear }} cvwizard.online – a solution by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions</a>. All rights reserved.</p>
         </div>
       </footer>
     </div>
-    <Modal :is-large="true" heading="Download PDF" cancellation-button-label="Close" confirmation-button-label="Download for $4.95" :confirmation-button-disabled="!canPay || downloadModalLoading" :confirmation-button-loading="downloadModalLoading" @confirm="processPayment()" @cancel="showDownloadModal = false" v-show="showDownloadModal">
-      <h4 class="text-purple-brand text-center">Increase your chances of getting your dream job!</h4>
-      <div class="flex flex-col items-center justify-center mt-8">
-        <div class="font-bold uppercase text-sm text-white bg-red-700 p-2 rounded-md mb-4">
-          Limited time offer
-        </div>
-        <div class="flex items-center space-x-4">
-          <div class="flex text-gray-400 crossed">
-            <div class="flex items-center space-x-2">
-              <span class="text-2xl">$</span>
-              <span class="font-bold text-4xl">6</span>
-            </div>
-            <sup class="text-xl">.95</sup>
-          </div>
-          <div class="flex">
-            <div class="flex items-center space-x-2">
-              <span class="text-2xl">$</span>
-              <span class="font-bold text-4xl">4</span>
-            </div>
-            <sup class="text-xl">.95</sup>
-          </div>
-        </div>
-        <div class="font-bold uppercase mt-2">
-          <span>per download</span>
-        </div>
-      </div>
-      <div class="flex justify-center mt-6 mb-10 w-full">
-        <div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
-          <span class="block text-sm mb-2">🔒 Safe and Secure SSL Encrypted Payments</span>
-          <div class="p-2 border rounded-md shadow-md">
-            <div id="card-element"></div>
-          </div>
-        </div>
-      </div>
+    <Modal v-show="showDonationModal" heading="Thank you for your download!" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showDonationModal = false">
+      <p class="mb-4">If you'd like to support this project, feel free to donate a coffee through my Wishlist Page:</p>
+      <p><a href="https://wishlistpage.com/manueljoswig?wish=4c35a4f4-f691-409d-8add-0da94c18f8b4">https://wishlistpage.com/manueljoswig?wish=4c35a4f4-f691-409d-8add-0da94c18f8b4</a></p>
     </Modal>
   </div>
 </template>
@@ -87,95 +40,25 @@ export default {
   data() {
     return {
       isDownloading: false,
-      showDownloadModal: false,
-      downloadModalLoading: false,
-      clientSecret: null,
-      card: null
+      showDonationModal: false
     }
   },
   computed: {
-    canPay() {
-      return this.clientSecret && this.card
+    copyrightYear() {
+      const year = new Date().getFullYear()
+      if (year === 2023) return year
+      return `2023-${year}`
     }
   },
   methods: {
-    async initStripe() {
-      if (this.$stripe) {
-        const response = await fetch('/api/create-payment-intent', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' }
-        })
-        const { clientSecret } = await response.json()
-        this.clientSecret = clientSecret
-
-        if (clientSecret) {
-          const elements = this.$stripe.elements()
-          const card = elements.create('card', {})
-          card.mount('#card-element')
-          this.card = card
-        }
-      }
-    },
     processDownload() {
       this.isDownloading = true
       const self = this
       setTimeout(() => {
         self.download()
         this.isDownloading = false
+        this.showDonationModal = true
       }, 500)
-    },
-    async processPayment() {
-      this.downloadModalLoading = true
-      this.isDownloading = true
-
-      const { error } = await this.$stripe.confirmCardPayment(this.clientSecret, {
-        payment_method: {
-          card: this.card
-        }
-      })
-
-      if (error) {
-        if (error.type === 'card_error' || error.type === 'validation_error') {
-          alert(error.message)
-        } else {
-          alert('An unexpected error occured.')
-        }
-
-        this.downloadModalLoading = false
-        this.isDownloading = false
-      } else {
-        this.download()
-
-        this.downloadModalLoading = false
-        this.isDownloading = false
-        this.showDownloadModal = false
-      }
-    },
-    async checkStatus() {
-      const clientSecret = new URLSearchParams(window.location.search).get(
-        'payment_intent_client_secret'
-      )
-
-      if (!clientSecret) {
-        return
-      }
-
-      const { paymentIntent } = await this.$stripe.retrievePaymentIntent(clientSecret)
-
-      switch (paymentIntent.status) {
-        case 'succeeded':
-          alert('Payment succeeded!')
-          break
-        case 'processing':
-          alert('Your payment is processing.')
-          break
-        case 'requires_payment_method':
-          alert('Your payment was not successful, please try again.')
-          break
-        default:
-          showMessage('Something went wrong.')
-          break
-      }
     },
     download() {
       if (process.client) {
@@ -198,9 +81,6 @@ export default {
         })
       }
     }
-  },
-  mounted() {
-    //this.initStripe()
   }
 }
 </script>

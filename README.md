@@ -1,4 +1,4 @@
-# cvwizard-io
+# cvwizard
 
 ## Build Setup
 

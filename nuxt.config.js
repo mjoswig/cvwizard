@@ -1,24 +1,22 @@
-import redirectSSL from 'redirect-ssl'
-
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'server',
+  target: 'static',
 
   // SSR (https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-ssr)
-  ssr: true,
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'cvwizard.io - Professional CV Builder',
+    title: 'cvwizard - Free CV Builder',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       //{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Save time and effort with cvwizard.io, the best professional resume maker & CV builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
-      { hid: 'og:title', property: 'og:title', content: 'Professional CV Builder - cvwizard.io' },
-      { hid: 'og:description', property: 'og:description', content: 'Save time and effort with cvwizard.io, the best professional resume maker & CV builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
+      { hid: 'description', name: 'description', content: 'Save time and effort with cvwizard, the best professional resume maker & CV builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
+      { hid: 'og:title', property: 'og:title', content: 'cvwizard - Free CV Builder' },
+      { hid: 'og:description', property: 'og:description', content: 'Save time and effort with cvwizard, the best professional resume maker & CV builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -48,26 +46,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/sitemap',
-    [
-      'nuxt-stripe-module',
-      {
-        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
-      }
-    ]
+    '@nuxtjs/sitemap'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
-
-  // Server Middleware Configuration
-  serverMiddleware: [
-    redirectSSL.create({
-      enabled: process.env.NODE_ENV === 'production'
-    }),
-    { path: '/api', handler: '~/api/index.js' }
-  ],
 
   // Google Fonts Configuration
   googleFonts: {
@@ -89,11 +73,6 @@ export default {
 
   // Sitemap Configuration
   sitemap: {
-    hostname: 'https://www.cvwizard.io'
-  },
-
-  // Axios Configuration
-  axios: {
-    baseURL: process.env.NODE_ENV === 'production' ? 'https://www.cvwizard.io' : 'http://localhost:3000'
+    hostname: 'https://cvwizard.online/'
   }
 }
