@@ -56,12 +56,12 @@
         </div>
         <div>
           <b class="block text-purple-brand text-3xl mb-4">Standard Download</b>
-          <span class="inline-block mb-4 text-3xl"><span class="text-xl" style="margin-right: 4px;">$</span>7<sup class="text-lg">.95</sup><span class="text-base"> per download</span></span>
-          <ul class="text-lg mb-4">
+          <span class="font-bold inline-block mb-4 text-3xl"><span class="text-xl" style="margin-right: 4px;">$</span>7<sup class="text-lg">.95</sup><span class="font-normal text-base"> per download</span></span>
+          <ul class="text-lg mb-8">
             <li>✅ High-resolution PDF</li>
             <li>✅ No watermark</li>
           </ul>
-          <p class="text-lg mb-6">You'll be redirected to a download page after payment is complete.</p>
+          <p class="text-gray-500 text-sm mb-8">You'll be redirected to a download page after payment is complete.</p>
           <Btn class="text-lg" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
         </div>
       </div>
