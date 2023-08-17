@@ -8,16 +8,16 @@
       <CVBuilder :is-downloading="isDownloading" />
     </section>
     <section class="mb-12">
-      <h2 class="sm:text-center mb-4">The best free CV builder in 2023</h2>
+      <h2 class="sm:text-center mb-4">The best free CV builder in {{ currentYear }}</h2>
       <p class="text-lg mb-8">Our CV Maker is designed to help you craft the perfect CV, no matter what stage of your career you're in. With a range of powerful features and a user-friendly interface, you'll be able to create a standout CV in just a few minutes.</p>
       <div class="grid md:grid-cols-2 gap-8">
         <div>
           <h3 class="mb-2">No sign-up required</h3>
-          <p class="text-lg">Build and download your CV without having to create an account. All you need to do is enter your information and download your CV.</p>
+          <p class="text-lg">Build and download your CV without having to create an account. All you need to do is enter your information and click "Download".</p>
         </div>
         <div>
           <h3 class="mb-2">PDF download</h3>
-          <p class="text-lg">Our paid PDF CV download offers a high-quality, professionally designed CV that is perfect for printing or emailing to potential employers.</p>
+          <p class="text-lg">Our PDF CV download offers a high-quality, professionally designed CV that is perfect for printing or emailing to potential employers.</p>
         </div>
         <div>
           <h3 class="mb-2">ATS-friendly</h3>
@@ -54,7 +54,12 @@
 <script>
 export default {
   name: 'IndexPage',
-  props: ['isDownloading']
+  props: ['isDownloading'],
+  computed: {
+    currentYear() {
+      return new Date().getFullYear()
+    }
+  }
 }
 </script>
 
