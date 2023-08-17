@@ -1,9 +1,11 @@
+import redirectSSL from 'redirect-ssl'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
+  target: 'server',
 
   // SSR (https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-ssr)
-  ssr: false,
+  ssr: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -74,5 +76,13 @@ export default {
   // Sitemap Configuration
   sitemap: {
     hostname: 'https://cvwizard.online/'
-  }
+  },
+
+  // Server Middleware Configuration
+  serverMiddleware: [
+    redirectSSL.create({
+      enabled: process.env.NODE_ENV === 'production'
+    }),
+    { path: '/api', handler: '~/api/index.js' }
+  ]
 }

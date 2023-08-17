@@ -1,6 +1,6 @@
 {
   "name": "cvwizard",
-  "version": "1.5.9",
+  "version": "1.6.0",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -13,9 +13,12 @@
     "@nuxtjs/google-gtag": "^1.0.4",
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.25.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "nuxt": "^2.15.8",
+    "redirect-ssl": "^3.0.0",
     "vue": "^2.7.10",
     "vue-color": "^2.8.1",
     "vue-server-renderer": "^2.7.10",
