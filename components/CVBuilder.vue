@@ -4,7 +4,7 @@
       <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-2 md:grid-cols-4" style="max-width: 21cm;">
         <div class="p-4">
           <div class="flex justify-center">
-            <div class="h-8 w-8 cursor-pointer rounded-full mb-2" :style="{ 'background-color': settings.color.hex }" @click="showColorPicker = true"></div>
+            <div class="h-8 w-8 cursor-pointer rounded-full mb-2" :style="{ 'background-color': settings.color.hex }" @click="openColorPicker"></div>
           </div>
           <span class="uppercase text-white">Color</span>
         </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="p-4">
           <div class="flex justify-center text-white mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-grid-1x2-fill" viewBox="0 0 16 16" @click="showSectionManagement = true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-grid-1x2-fill" viewBox="0 0 16 16" @click="openSectionManagement">
               <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
             </svg>
           </div>
@@ -478,6 +478,14 @@ export default {
     }
   },
   methods: {
+    openColorPicker() {
+      document.body.classList.add('modal-open')
+      this.showColorPicker = true
+    },
+    openSectionManagement() {
+      document.body.classList.add('modal-open')
+      this.showSectionManagement = true
+    },
     addSkill(skillGroup) {
       this.cvData[skillGroup].values.push('Enter skill')
     },
