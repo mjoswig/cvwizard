@@ -75,7 +75,7 @@ export default {
 
   // Sitemap Configuration
   sitemap: {
-    hostname: 'https://cvwizard.online/'
+    hostname: 'https://cvwizard.online'
   },
 
   // Server Middleware Configuration

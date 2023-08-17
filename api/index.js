@@ -24,9 +24,9 @@ app.post('/api/checkout', async (req, res) => {
           currency: 'usd',
           unit_amount: 795,
           product_data: {
-            name: 'cvwizard PDF Download',
+            name: 'cvwizard.online PDF Download',
             images: [
-              'https://wishlistpage.com/images/logo.png'
+              'https://cvwizard.online/images/logo.png'
             ]
           }
         },

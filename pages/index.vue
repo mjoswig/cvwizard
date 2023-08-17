@@ -69,6 +69,6 @@ export default {
 }
 .page-content section {
   @apply w-full;
-  max-width: 21cm !important;
+  max-width: 21cm;
 }
 </style>
