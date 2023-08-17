@@ -63,7 +63,7 @@
             <li>✅ Optimized for ATS</li>
           </ul>
           <p class="text-lg mb-6">You'll be redirected to a download page after payment is complete.</p>
-          <Btn class="text-lg" @click="buyNow">Buy Now</Btn>
+          <Btn class="text-lg" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
         </div>
       </div>
     </Modal>
@@ -77,9 +77,10 @@ import{ jsPDF } from 'jspdf'
 export default {
   data() {
     return {
+      showPaywallModal: false,
       canDownloadFreePdf: false,
       isDownloading: false,
-      showPaywallModal: false
+      isLoadingCheckout: false
     }
   },
   computed: {
@@ -109,10 +110,12 @@ export default {
       }, 1000)
     },
     async buyNow() {
+      this.isLoadingCheckout = true
       const response = await this.$axios.$post('/api/checkout', {
         cv_download_url: ''
       })
       window.location.href = response.url
+      this.isLoadingCheckout = false
     },
     download() {
       if (process.client) {
