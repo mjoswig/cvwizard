@@ -40,7 +40,7 @@
     </div>
     <div class="flex justify-center overflow-scroll w-full" :class="fontClass">
       <div id="cv" class="relative bg-white overflow-scroll shadow-lg w-full">
-        <span v-show="showWatermark" class="absolute bottom-8 font-bold text-purple-brand text-center uppercase w-full" style="margin-left: -1cm;">
+        <span v-show="showWatermark" class="absolute top-8 right-8 font-bold text-sm text-right uppercase w-full" style="margin-left: -1cm;">
           Made for free at www.cvwizard.online
         </span>
         <div class="flex items-center w-full">
