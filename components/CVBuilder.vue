@@ -277,7 +277,7 @@
         </div>
       </div>
     </div>
-    <Modal heading="Pick a color" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showColorPicker = false" @cancel="showColorPicker = false" v-show="showColorPicker">
+    <Modal max-width="300px" heading="Pick a color" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showColorPicker = false" @cancel="showColorPicker = false" v-show="showColorPicker">
       <vue-color :color="settings.color" v-model="settings.color" />
     </Modal>
     <Modal :is-large="true" heading="Manage sections" cancellation-button-label="Close" :hide-confirmation-button="true" @confirm="showSectionManagement = false" @cancel="showSectionManagement = false" v-show="showSectionManagement">

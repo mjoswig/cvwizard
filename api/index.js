@@ -26,7 +26,7 @@ app.post('/api/checkout', async (req, res) => {
           product_data: {
             name: 'cvwizard.online PDF Download',
             images: [
-              'https://cvwizard.online/images/logo.png'
+              'https://cvwizard.online/images/cv.png'
             ]
           }
         },
@@ -42,7 +42,7 @@ app.post('/api/checkout', async (req, res) => {
         cv_download_url: cvDownloadUrl
       }
     },
-    success_url: 'https://cvwizard.online/',
+    success_url: `https://cvwizard.online/thank-you?download_url=${cvDownloadUrl}`,
     cancel_url: 'https://cvwizard.online/'
   }
 

@@ -6,7 +6,7 @@
       <!-- This element is to trick the browser into centering the modal contents. -->
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-      <div class="p-6 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle" :class="{ 'w-128': !isLarge, 'w-full sm:w-3/4 lg:w-1/2': isLarge }">
+      <div class="p-6 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-full" :style="{ 'max-width': maxWidth }">
         <div class="make-modal-scrollable text-center sm:mt-0 sm:text-left mb-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900 mb-6" id="modal-title" v-show="heading !== ''">
             {{ heading }}
@@ -30,10 +30,10 @@
 export default {
   name: 'Modal',
   props: {
-    isLarge: {
-      type: Boolean,
+    maxWidth: {
+      type: String,
       required: false,
-      default: false
+      default: '600px'
     },
     heading: {
       type: String,
