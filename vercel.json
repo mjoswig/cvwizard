@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "nuxt.config.js",
+      "use": "@nuxtjs/vercel-builder",
+      "config": {}
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path",
+      "destination": "https://cvwizard-one.vercel.app/api/:path"
+    }
+  ]
+}
