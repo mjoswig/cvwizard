@@ -43,9 +43,13 @@
         <h3 class="text-gray-500 mb-2">How to list references on a CV?</h3>
         <p class="text-lg">It's generally recommended not to list references on a CV. Instead, you can include a separate document with your references, which can be provided upon request from the employer.</p>
       </div>
-      <div>
+      <div class="mb-8">
         <h3 class="text-gray-500 mb-2">How should a CV look?</h3>
         <p class="text-lg">When it comes to the appearance of a CV, simplicity and readability are key, and it's generally best to avoid overly creative design elements that could be distracting or hard to read.</p>
+      </div>
+      <div>
+        <h3 class="text-gray-500 mb-2">Who can I ask if I have questions?</h3>
+        <p class="text-lg">You can email me at manuel@joswigsolutions.com. I'll get back to you as soon as possible.</p>
       </div>
     </section>
   </article>
