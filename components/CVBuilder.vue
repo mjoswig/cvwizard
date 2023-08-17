@@ -39,7 +39,10 @@
       </div>
     </div>
     <div class="flex justify-center overflow-scroll w-full" :class="fontClass">
-      <div id="cv" class="bg-white overflow-scroll shadow-lg w-full">
+      <div id="cv" class="relative bg-white overflow-scroll shadow-lg w-full">
+        <span v-show="!hideWatermark" class="absolute bottom-8 font-bold text-purple-brand text-center uppercase w-full" style="margin-left: -1cm;">
+          Made for free at www.cvwizard.online
+        </span>
         <div class="flex items-center w-full">
           <div class="mr-8" style="width: 7cm;" v-show="settings.sectionVisibility.picture">
             <label for="cv-picture">
@@ -333,7 +336,7 @@
 <script>
 export default {
   name: 'CVBuilder',
-  props: ['showToolbar', 'isDownloading'],
+  props: ['showToolbar', 'isDownloading', 'hideWatermark'],
   data() {
     return {
       profilePictureFileBase64: null,

@@ -7,7 +7,7 @@
             <nuxt-link to="/"><img class="w-20 h-auto" src="@/assets/images/logo.png" /></nuxt-link>
           </div>
           <div>
-            <Btn @click="showPaywallModal = true">
+            <Btn @click="openPaywallModal">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
                 <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
               </svg>
@@ -17,7 +17,7 @@
         </div>
       </header>
       <main>
-        <nuxt-child :is-downloading="isDownloadingFreePdf || isDownloadingStandardPdf" />
+        <nuxt-child :is-downloading="isDownloadingFreePdf || isDownloadingStandardPdf" :hide-watermark="isDownloadingStandardPdf" />
       </main>
       <footer class="flex flex-col items-center px-8 pb-8 pt-2 text-sm">
         <div>
@@ -29,7 +29,7 @@
       <div class="grid grid-cols-2 gap-8">
         <div>
           <b class="block text-gray-500 text-3xl mb-4">Free Download</b>
-          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs (with watermark) to job seekers who need the most help.</p>
+          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs (low-resolution PDF with watermark) to job seekers who need the most help.</p>
           <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
           <div class="relative text-lg">
             <div v-show="!canDownloadFreePdf" class="absolute h-full w-full bg-gray-100 opacity-50" style="max-width: 175px;"></div>
@@ -60,7 +60,6 @@
           <ul class="text-lg mb-4">
             <li>✅ High-resolution PDF</li>
             <li>✅ No watermark</li>
-            <li>✅ Optimized for ATS</li>
           </ul>
           <p class="text-lg mb-6">You'll be redirected to a download page after payment is complete.</p>
           <Btn class="text-lg" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
@@ -121,7 +120,7 @@ export default {
         pdfFile = await self.downloadPdf()
         self.isDownloadingStandardPdf = false
 
-        const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}`, pdfFile)
+        const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}.pdf`, pdfFile)
         const response = await this.$axios.$post('/api/checkout', {
           cv_download_url: pdfUrl
         })
@@ -142,9 +141,9 @@ export default {
         return html2canvas(document.querySelector('#cv'), {
           width: doc.internal.pageSize.getWidth(),
           height: doc.internal.pageSize.getHeight(),
-          scale: 4
+          scale: 2
         }).then((canvas) => {
-          const img = canvas.toDataURL('image/jpeg')
+          const img = canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1)
 
           doc.addImage(img, 'JPEG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight())
 
@@ -164,6 +163,10 @@ export default {
         self.isDownloadingFreePdf = false
         self.showPaywallModal = false
       }, 500)
+    },
+    openPaywallModal() {
+      document.body.classList.add('modal-open')
+      this.showPaywallModal = true
     }
   }
 }
@@ -182,6 +185,10 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   color: #2d3748;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 *,

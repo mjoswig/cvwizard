@@ -14,10 +14,10 @@
           <slot />
         </div>
         <div class="sm:flex sm:flex-row-reverse">
-          <Btn :type="confirmationButtonType" :is-disabled="confirmationButtonDisabled" :is-loading="confirmationButtonLoading" class="w-full sm:ml-3 sm:w-auto" @click="$emit('confirm')" v-if="!hideConfirmationButton">
+          <Btn :type="confirmationButtonType" :is-disabled="confirmationButtonDisabled" :is-loading="confirmationButtonLoading" class="w-full sm:ml-3 sm:w-auto" @click="confirm" v-if="!hideConfirmationButton">
             {{ confirmationButtonLabel }}
           </Btn>
-          <Btn type="light" class="mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto" @click="$emit('cancel')">
+          <Btn type="light" class="mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto" @click="cancel">
             {{ cancellationButtonLabel }}
           </Btn>
         </div>
@@ -69,6 +69,16 @@ export default {
       type: String,
       required: false,
       default: 'Cancel'
+    }
+  },
+  methods: {
+    confirm() {
+      document.body.classList.remove('modal-open')
+      this.$emit('confirm')
+    },
+    cancel() {
+      document.body.classList.remove('modal-open')
+      this.$emit('cancel')
     }
   }
 }

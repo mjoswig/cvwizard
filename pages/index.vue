@@ -5,7 +5,7 @@
       <p class="sm:text-center text-xl">cvwizard is a free CV builder that offers a quick and easy way to create your CV online.<span class="lg:hidden"> You'll get the best user experience by visiting this website on a large device.</span></p>
     </section>
     <section class="mb-14">
-      <CVBuilder :show-toolbar="true" :is-downloading="isDownloading" />
+      <CVBuilder :show-toolbar="true" :is-downloading="isDownloading" :hide-watermark="hideWatermark" />
     </section>
     <section class="mb-12">
       <h2 class="sm:text-center mb-4">The best free CV builder in {{ currentYear }}</h2>
@@ -20,8 +20,8 @@
           <p class="text-lg">Our PDF CV download offers a high-quality, professionally designed CV that is perfect for printing or emailing to potential employers.</p>
         </div>
         <div>
-          <h3 class="text-gray-500 mb-2">ATS-friendly</h3>
-          <p class="text-lg">Designed with applicant tracking systems (ATS) in mind, you can be confident that your CV will get seen by the right people.</p>
+          <h3 class="text-gray-500 mb-2">Customizable format</h3>
+          <p class="text-lg">Tailor your CV template to fit your specific needs. Choose from a variety of sections to create a unique and personalized CV format.</p>
         </div>
         <div>
           <h3 class="text-gray-500 mb-2">Privacy-friendly</h3>
@@ -54,7 +54,7 @@
 <script>
 export default {
   name: 'IndexPage',
-  props: ['isDownloading'],
+  props: ['isDownloading', 'hideWatermark'],
   computed: {
     currentYear() {
       return new Date().getFullYear()
