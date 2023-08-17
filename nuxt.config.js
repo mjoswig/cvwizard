@@ -83,6 +83,6 @@ export default {
     redirectSSL.create({
       enabled: process.env.NODE_ENV === 'production'
     }),
-    { path: '/api', handler: '~/api/index.js' }
+    { path: '/', handler: '~/api/index.js' }
   ]
 }

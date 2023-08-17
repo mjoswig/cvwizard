@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors({ origin: true }))
 
 // test api request
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
   return res.status(200).send('API is ready')
 })
 
