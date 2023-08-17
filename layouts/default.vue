@@ -25,7 +25,7 @@
         </div>
       </footer>
     </div>
-    <Modal v-show="true" max-width="750px" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showPaywallModal = false">
+    <Modal v-show="showPaywallModal" max-width="750px" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showPaywallModal = false">
       <div class="grid grid-cols-2 gap-8">
         <div>
           <b class="block text-gray-500 text-3xl mb-4">Free Download</b>
