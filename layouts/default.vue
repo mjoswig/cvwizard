@@ -117,20 +117,18 @@ export default {
       this.isDownloadingStandardPdf = true
       let pdfFile = null
       const self = this
-      setTimeout(() => {
-        pdfFile = self.downloadPdf()
+      setTimeout(async () => {
+        pdfFile = await self.downloadPdf()
         self.isDownloadingStandardPdf = false
+
+        const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}`, pdfFile)
+        const response = await this.$axios.$post('/api/checkout', {
+          cv_download_url: pdfUrl
+        })
+        window.location.href = response.url
+
+        this.isLoadingCheckout = false
       }, 500)
-
-      const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}.pdf`, pdfFile)
-      console.log(pdfUrl)
-
-      /*const response = await this.$axios.$post('/api/checkout', {
-        cv_download_url: ''
-      })
-      window.location.href = response.url*/
-
-      this.isLoadingCheckout = false
     },
     downloadPdf(saveFile = false) {
       if (process.client) {
@@ -153,7 +151,7 @@ export default {
           if (saveFile) {
             doc.save('cv.pdf')
           } else {
-            return new Blob([ doc.output() ], { type : 'application/pdf' })
+            return doc.output('blob')
           }
         })
       }
