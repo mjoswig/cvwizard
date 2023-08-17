@@ -17,7 +17,7 @@
         </div>
       </header>
       <main>
-        <nuxt-child :is-downloading="isDownloading" />
+        <nuxt-child :is-downloading="isDownloadingFreePdf || isDownloadingStandardPdf" />
       </main>
       <footer class="flex flex-col items-center px-8 pb-8 pt-2 text-sm">
         <div>
@@ -33,8 +33,8 @@
           <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
           <div class="relative text-lg">
             <div v-show="!canDownloadFreePdf" class="absolute h-full w-full bg-gray-100 opacity-50" style="max-width: 175px;"></div>
-            <span>🔒</span>
-            <a href="#">Download Free CV</a>
+            <span v-show="!canDownloadFreePdf">🔒</span>
+            <a class="cursor-pointer" href="#" @click.prevent="downloadFreePdf">Download Free CV</a>
           </div>
           <div v-show="!canDownloadFreePdf" class="flex space-x-4 mt-6">
             <a :href="facebookShareUrl" target="_blank" class="text-gray-500 bg-gray-100 border rounded-md shadow-sm p-2 w-fit" @click.prevent="openShareWindow(facebookShareUrl, 'Share on Facebook', 750, 500)">
@@ -71,15 +71,17 @@
 </template>
 
 <script>
-import html2canvas from 'html2canvas'
+import { v4 as uuidv4 } from 'uuid'
 import{ jsPDF } from 'jspdf'
+import html2canvas from 'html2canvas'
 
 export default {
   data() {
     return {
       showPaywallModal: false,
       canDownloadFreePdf: false,
-      isDownloading: false,
+      isDownloadingFreePdf: false,
+      isDownloadingStandardPdf: false,
       isLoadingCheckout: false
     }
   },
@@ -111,13 +113,26 @@ export default {
     },
     async buyNow() {
       this.isLoadingCheckout = true
-      const response = await this.$axios.$post('/api/checkout', {
+
+      this.isDownloadingStandardPdf = true
+      let pdfFile = null
+      const self = this
+      setTimeout(() => {
+        pdfFile = self.downloadPdf()
+        self.isDownloadingStandardPdf = false
+      }, 500)
+
+      const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}.pdf`, pdfFile)
+      console.log(pdfUrl)
+
+      /*const response = await this.$axios.$post('/api/checkout', {
         cv_download_url: ''
       })
-      window.location.href = response.url
+      window.location.href = response.url*/
+
       this.isLoadingCheckout = false
     },
-    download() {
+    downloadPdf(saveFile = false) {
       if (process.client) {
         const doc = new jsPDF({
           orientation: 'p',
@@ -126,7 +141,7 @@ export default {
           hotfixes: ['px_scaling']
         })
 
-        html2canvas(document.querySelector('#cv'), {
+        return html2canvas(document.querySelector('#cv'), {
           width: doc.internal.pageSize.getWidth(),
           height: doc.internal.pageSize.getHeight(),
           scale: 4
@@ -134,9 +149,23 @@ export default {
           const img = canvas.toDataURL('image/jpeg')
 
           doc.addImage(img, 'JPEG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight())
-          doc.save('cv.pdf')
+
+          if (saveFile) {
+            doc.save('cv.pdf')
+          } else {
+            return new Blob([ doc.output() ], { type : 'application/pdf' })
+          }
         })
       }
+    },
+    downloadFreePdf() {
+      this.isDownloadingFreePdf = true
+      const self = this
+      setTimeout(() => {
+        self.downloadPdf(true)
+        self.isDownloadingFreePdf = false
+        self.showPaywallModal = false
+      }, 500)
     }
   }
 }
@@ -229,37 +258,8 @@ header, main, footer {
   color: #a600ff;
 }
 
-.cta-button-primary {
-  background-color: #a600ff;
-
-  &:hover {
-    background-color: #8500cc;
-  }
-}
-
-.cta-link-primary {
-  @apply font-bold text-white rounded-md shadow-md px-4 py-2 flex justify-center;
-  background-color: #a600ff;
-
-  &:focus {
-    @apply outline-none;
-  }
-
-  &:hover {
-    @apply text-white;
-    background-color: #8500cc;
-    text-decoration: none;
-  }
-}
-
-.crossed {
-  background:
-    linear-gradient(to top left,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0) calc(50% - 0.8px),
-      rgba(185,28,28,1),
-      rgba(0,0,0,0) calc(50% + 0.8px),
-      rgba(0,0,0,0) 100%);
+#viewer {
+  display: none;
 }
 
 @media (max-width: 1280px) {

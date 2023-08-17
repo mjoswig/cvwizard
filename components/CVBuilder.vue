@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-center mb-8 w-full">
+    <div v-show="showToolbar" class="flex justify-center mb-8 w-full">
       <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-2 md:grid-cols-4" style="max-width: 21cm;">
         <div class="p-4">
           <div class="flex justify-center">
@@ -333,7 +333,7 @@
 <script>
 export default {
   name: 'CVBuilder',
-  props: ['isDownloading'],
+  props: ['showToolbar', 'isDownloading'],
   data() {
     return {
       profilePictureFileBase64: null,
@@ -563,7 +563,7 @@ export default {
 
 #cv {
   width: 21cm !important;
-  height: 29.7cm !important;
+  height: 29cm !important;
   padding: 10mm !important;
 }
 </style>
