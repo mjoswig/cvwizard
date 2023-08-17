@@ -99,6 +99,11 @@ export default {
     hostname: 'https://cvwizard.online'
   },
 
+  // Axios Configuration
+  axios: {
+    baseURL: '/'
+  },
+
   // Server Middleware Configuration
   serverMiddleware: [
     redirectSSL.create({
