@@ -22,7 +22,7 @@ app.post('/api/checkout', async (req, res) => {
       {
         price_data: {
           currency: 'usd',
-          unit_amount: 795,
+          unit_amount: 195,
           product_data: {
             name: 'cvwizard.online PDF Download',
             images: [
