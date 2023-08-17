@@ -17,7 +17,7 @@
         </div>
       </header>
       <main>
-        <nuxt-child :is-downloading="isDownloadingFreePdf || isDownloadingStandardPdf" :hide-watermark="isDownloadingStandardPdf" />
+        <nuxt-child :is-downloading="isDownloadingFreePdf || isDownloadingStandardPdf" :show-watermark="isDownloadingFreePdf" />
       </main>
       <footer class="flex flex-col items-center px-8 pb-8 pt-2 text-sm">
         <div>
@@ -56,7 +56,7 @@
         </div>
         <div>
           <b class="block text-purple-brand text-3xl mb-4">Standard Download</b>
-          <span class="block mb-4 text-3xl">$7.95<span class="text-base"> per download</span></span>
+          <span class="inline-block mb-4 text-3xl"><span class="text-xl" style="margin-right: 4px;">$</span>7<sup class="text-lg">.95</sup><span class="text-base"> per download</span></span>
           <ul class="text-lg mb-4">
             <li>✅ High-resolution PDF</li>
             <li>✅ No watermark</li>
@@ -89,8 +89,8 @@ export default {
       return `https://www.facebook.com/sharer/sharer.php?u=https://cvwizard.online/`
     },
     twitterShareUrl() {
-      const text = `Making a resume can be tough, but this website makes it easy and free! No sign-up required, just check it out! https://cvwizard.online/ #Resume #ResumeTips #ResumeWriting #JobSearch #JobHunt #JobTips #JobSeekers #Jobs #Career #CareerAdvice #Employment #HR #CV #Free #Template`
-      return `https://twitter.com/intent/tweet?text=${text}`
+      const text = `Making a CV can be tough, but this website makes it easy and free! No sign-up required, just check it out!\n\n🧙✨ https://cvwizard.online/\n\n#cv #resumetips #resumewriting #jobsearch #jobhunt #jobtips #jobseekers #jobs #career #careeradvice`
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`
     },
     linkedInShareUrl() {
       return `https://www.linkedin.com/shareArticle?mini=true&url=https://cvwizard.online/`
@@ -162,6 +162,7 @@ export default {
         self.downloadPdf(true)
         self.isDownloadingFreePdf = false
         self.showPaywallModal = false
+        document.body.classList.remove('modal-open')
       }, 500)
     },
     openPaywallModal() {
