@@ -144,7 +144,7 @@ export default {
           const imgHeight = (canvas.height * imgWidth) / canvas.width
           let heightLeft = imgHeight
           let position = 0
-          heightLeft -= pageHeight;
+          heightLeft -= pageHeight
           doc.addImage(canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
           while (heightLeft >= 0) {
             position = heightLeft - imgHeight
