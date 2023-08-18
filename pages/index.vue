@@ -48,8 +48,8 @@
         <p class="text-lg">When it comes to the appearance of a CV, simplicity and readability are key, and it's generally best to avoid overly creative design elements that could be distracting or hard to read.</p>
       </div>
       <div>
-        <h3 class="text-gray-500 mb-2">Who can I ask if I have questions?</h3>
-        <p class="text-lg">You can email me at manuel@joswigsolutions.com. I'll get back to you as soon as possible.</p>
+        <h3 class="text-gray-500 mb-2">Can I get a refund?</h3>
+        <p class="text-lg">If you're not happy with the generated CV, email me at manuel@joswigsolutions.com and ask for a refund. Please attach feedback as well, because it helps me to improve the product.</p>
       </div>
     </section>
   </article>

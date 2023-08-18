@@ -41,7 +41,7 @@
     <div class="flex justify-center w-full" :class="fontClass">
       <div id="cv" ref="cv" class="relative bg-white shadow-lg w-full">
         <div v-for="(page, index) in pageMarkers" :key="index" class="page-marker" :class="{ 'hidden': isDownloading }" :style="{ 'top': `${index * 1096}px` }">
-          <span class="absolute bottom-1 left-2 text-gray-400 text-xs">Please add 4-5 line breaks to separate pages</span>
+          <span class="absolute bottom-1 left-1 text-gray-400 text-xs">Please add 5-6 line breaks to separate pages</span>
         </div>
         <span v-show="showWatermark" class="absolute top-8 right-8 font-bold text-sm text-right uppercase w-full" style="margin-left: -1cm;">
           Made for free at www.cvwizard.online
