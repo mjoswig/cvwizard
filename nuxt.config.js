@@ -16,9 +16,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       //{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Save time and effort with cvwizard, the best professional resume maker & CV builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
+      { hid: 'description', name: 'description', content: 'Save time and effort with cvwizard, the best professional Resume Maker & CV Builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
       { hid: 'og:title', property: 'og:title', content: 'cvwizard - Free CV Builder' },
-      { hid: 'og:description', property: 'og:description', content: 'Save time and effort with cvwizard, the best professional resume maker & CV builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
+      { hid: 'og:description', property: 'og:description', content: 'Save time and effort with cvwizard, the best professional Resume Maker & CV Builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
       { hid: 'og-image', property: 'og:image', content: 'https://cvwizard.online/images/og-image.png' },
       { hid: 'twitter-image', property: 'twitter:image', content: 'https://cvwizard.online/images/og-image.png' },
       { name: 'format-detection', content: 'telephone=no' }

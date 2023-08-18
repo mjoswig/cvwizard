@@ -2,13 +2,13 @@
   <article class="page-content">
     <section class="mb-12">
       <h1 class="text-purple-brand sm:text-center mb-4">The easiest way to create a CV</h1>
-      <p class="sm:text-center text-xl">cvwizard is a free CV builder that offers a quick and easy way to create your CV online.<span class="lg:hidden"> You'll get the best user experience by visiting this website on a large device.</span></p>
+      <p class="sm:text-center text-xl">cvwizard is a free CV Builder that offers a quick and easy way to create your CV online.<span class="lg:hidden"> You'll get the best user experience by visiting this website on a large device.</span></p>
     </section>
     <section class="mb-14">
       <CVBuilder :show-toolbar="true" :is-downloading="isDownloading" :show-watermark="showWatermark" />
     </section>
     <section class="mb-12">
-      <h2 class="sm:text-center mb-4">The best free CV builder in {{ currentYear }}</h2>
+      <h2 class="sm:text-center mb-4">The best free CV Builder in {{ currentYear }}</h2>
       <p class="text-lg mb-8">Our CV Maker is designed to help you craft the perfect CV, no matter what stage of your career you're in. With a range of powerful features and a user-friendly interface, you'll be able to create a standout CV in just a few minutes.</p>
       <div class="grid md:grid-cols-2 gap-8">
         <div>
