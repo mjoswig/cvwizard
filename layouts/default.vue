@@ -138,14 +138,20 @@ export default {
           hotfixes: ['px_scaling']
         })
 
-        return html2canvas(document.querySelector('#cv'), {
-          width: doc.internal.pageSize.getWidth(),
-          height: doc.internal.pageSize.getHeight(),
-          scale: 2
-        }).then((canvas) => {
-          const img = canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1)
-
-          doc.addImage(img, 'JPEG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight())
+        return html2canvas(document.querySelector('#cv')).then((canvas) => {
+          const imgWidth = doc.internal.pageSize.getWidth()
+          const pageHeight = doc.internal.pageSize.getHeight()
+          const imgHeight = (canvas.height * imgWidth) / canvas.width
+          let heightLeft = imgHeight
+          let position = 0
+          heightLeft -= pageHeight;
+          doc.addImage(canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
+          while (heightLeft >= 0) {
+            position = heightLeft - imgHeight
+            doc.addPage()
+            doc.addImage(canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
+            heightLeft -= pageHeight
+          }
 
           if (saveFile) {
             doc.save('cv.pdf')

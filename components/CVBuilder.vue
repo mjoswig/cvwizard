@@ -38,8 +38,8 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center overflow-scroll w-full" :class="fontClass">
-      <div id="cv" class="relative bg-white overflow-scroll shadow-lg w-full">
+    <div class="flex justify-center w-full" :class="fontClass">
+      <div id="cv" class="relative bg-white shadow-lg w-full">
         <span v-show="showWatermark" class="absolute top-8 right-8 font-bold text-sm text-right uppercase w-full" style="margin-left: -1cm;">
           Made for free at www.cvwizard.online
         </span>
@@ -573,8 +573,9 @@ export default {
 }
 
 #cv {
-  width: 21cm !important;
-  height: 29cm !important;
+  width: 100%;
+  max-width: 21cm !important;
+  /*height: 29cm !important;*/
   padding: 10mm !important;
 }
 </style>
