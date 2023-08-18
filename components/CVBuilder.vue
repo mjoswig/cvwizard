@@ -39,7 +39,8 @@
       </div>
     </div>
     <div class="flex justify-center w-full" :class="fontClass">
-      <div id="cv" class="relative bg-white shadow-lg w-full">
+      <div id="cv" ref="cv" class="relative bg-white shadow-lg w-full">
+        <div v-for="(page, index) in pageMarkers" :key="index" class="page-marker" :class="{ 'hidden': isDownloading }" :style="{ 'top': `${index * 1096}px` }"></div>
         <span v-show="showWatermark" class="absolute top-8 right-8 font-bold text-sm text-right uppercase w-full" style="margin-left: -1cm;">
           Made for free at www.cvwizard.online
         </span>
@@ -339,6 +340,8 @@ export default {
   props: ['showToolbar', 'isDownloading', 'showWatermark'],
   data() {
     return {
+      cvHeight: 0,
+      pageMarkers: [],
       profilePictureFileBase64: null,
       showColorPicker: false,
       showSectionManagement: false,
@@ -475,6 +478,17 @@ export default {
         'fira-sans': this.settings.typography === 'fira-sans',
         'saira-semi-condensed': this.settings.typography === 'saira-semi-condensed'
       }
+    },
+    pageCount() {
+      return this.cvHeight / 1122.52
+    }
+  },
+  watch: {
+    cvData: {
+      handler() {
+        this.computeCvFormat()
+      },
+      deep: true
     }
   },
   methods: {
@@ -530,7 +544,14 @@ export default {
       // quick'n dirty hack to dynamically display logo
       const pictureStyle = `background-image: url(${this.profilePictureFileBase64}); background-position: center; background-size: cover; background-repeat: no-repeat;`
       document.querySelector('.profile-picture-placeholder').style = pictureStyle
+    },
+    computeCvFormat() {
+      this.cvHeight = this.$refs.cv.clientHeight
+      this.pageMarkers = Array(Math.ceil(this.pageCount)).fill(0)
     }
+  },
+  mounted() {
+    this.computeCvFormat()
   }
 }
 </script>
@@ -577,5 +598,10 @@ export default {
   max-width: 21cm !important;
   /*height: 29cm !important;*/
   padding: 10mm !important;
+}
+.page-marker {
+  @apply absolute top-0 left-0 border-b border-gray-300;
+  width: 100%;
+  height: 29cm;
 }
 </style>
