@@ -29,7 +29,7 @@
       <div class="grid grid-cols-2 gap-8">
         <div>
           <b class="block text-gray-500 text-3xl mb-4">Free Download</b>
-          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs (low-resolution PDF with watermark) to job seekers who need the most help.</p>
+          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs <b>with watermark</b>.</p>
           <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
           <div class="relative text-lg">
             <div v-show="!canDownloadFreePdf" class="absolute h-full w-full bg-gray-100 opacity-50" style="max-width: 175px;"></div>
@@ -57,11 +57,10 @@
         <div>
           <b class="block text-purple-brand text-3xl mb-4">Standard Download</b>
           <span class="font-bold inline-block mb-4 text-3xl"><span class="text-xl" style="margin-right: 4px;">$</span>7<sup class="text-lg">.95</sup><span class="font-normal text-base"> per download</span></span>
-          <ul class="text-lg mb-8">
-            <li>✅ High-resolution PDF</li>
+          <ul class="text-lg mb-4">
             <li>✅ No watermark</li>
           </ul>
-          <p class="text-gray-500 text-sm mb-8">You'll be redirected to a download page after payment is complete.</p>
+          <p class="text-gray-500 text-sm mb-4">You'll be redirected to a download page after payment is complete.</p>
           <Btn class="text-lg" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
         </div>
       </div>
@@ -145,11 +144,11 @@ export default {
           let heightLeft = imgHeight
           let position = 0
           heightLeft -= pageHeight
-          doc.addImage(canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
+          doc.addImage(canvas.toDataURL('image/jpeg', 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
           while (heightLeft >= 0) {
             position = heightLeft - imgHeight
             doc.addPage()
-            doc.addImage(canvas.toDataURL('image/jpeg', saveFile ? 0.1 : 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
+            doc.addImage(canvas.toDataURL('image/jpeg', 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
             heightLeft -= pageHeight
           }
 
