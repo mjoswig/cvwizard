@@ -9,7 +9,7 @@
     </section>
     <section class="grid grid-cols-3 gap-6">
       <nuxt-link to="/cv-templates/salesforce-developer-operations">
-        <img class="border shadow-sm mb-4" src="@/assets/images/cv-data/salesforce-developer-operations.png" />
+        <img class="shadow-sm mb-6" src="@/assets/images/cv-data/salesforce-developer-operations.png" />
         <h2 class="text-xl">Salesforce Developer - Operations CV</h2>
       </nuxt-link>
     </section>
