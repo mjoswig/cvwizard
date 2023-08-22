@@ -182,7 +182,7 @@
                     <div>
                       <div class="h-4 w-4 rounded-full" :style="{ 'background-color': settings.color.hex }"></div>
                     </div>
-                    <div class="w-3/4">
+                    <div class="w-full">
                       <TextField :dl-fix="isDownloading" class="block font-bold w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" :style="{ 'color': settings.color.hex }" type="text" placeholder="Position" v-model="cvData.workExperience.positions[indexWx].position" />
                     </div>
                   </div>
@@ -231,7 +231,7 @@
                     </div>
                     <div class="w-full">
                       <div class="flex justify-between w-full">
-                        <TextField :dl-fix="isDownloading" class="block font-bold uppercase w-full" :class="{ 'text-xs': settings.textSize === 'small', 'text-sm': settings.textSize === 'medium', 'text-lg': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="School" v-model="cvData.education.degrees[indexEd].degree" />
+                        <TextField :dl-fix="isDownloading" class="block font-bold uppercase w-full" :class="{ 'text-xs': settings.textSize === 'small', 'text-sm': settings.textSize === 'medium', 'text-lg': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="School" v-model="cvData.education.degrees[indexEd].school" />
                         <TextField :dl-fix="isDownloading" class="block text-right" :class="{ 'text-xs': settings.textSize === 'small', 'text-sm': settings.textSize === 'medium', 'text-lg': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="From – Until" v-model="cvData.education.degrees[indexEd].timeSpan" />
                       </div>
                     </div>
@@ -337,9 +337,11 @@
 </template>
 
 <script>
+import defaultCvData from '@/assets/json/cv-data/default.json'
+
 export default {
   name: 'CVBuilder',
-  props: ['showToolbar', 'isDownloading', 'showWatermark'],
+  props: ['showToolbar', 'isDownloading', 'showWatermark', 'defaultCvData'],
   data() {
     return {
       cvHeight: 0,
@@ -373,100 +375,10 @@ export default {
           workExperience: true,
           education: true,
           skills1: true,
-          skills2: false
+          skills2: true
         }
       },
-      cvData: {
-        name: {
-          value: ''
-        },
-        profession: {
-          value: ''
-        },
-        profile: {
-          label: 'Profile',
-          value: ''
-        },
-        personalDetails: {
-          label: 'Personal details'
-        },
-        birthDate: {
-          label: 'Birth date',
-          value: ''
-        },
-        nationality: {
-          label: 'Nationality',
-          value: ''
-        },
-        address: {
-          label: 'Address',
-          value: ''
-        },
-        maritalStatus: {
-          label: 'Marital status',
-          value: ''
-        },
-        contact: {
-          label: 'Contact'
-        },
-        email: {
-          value: ''
-        },
-        phoneNumber: {
-          value: ''
-        },
-        website: {
-          value: ''
-        },
-        linkedIn: {
-          value: ''
-        },
-        facebook: {
-          value: ''
-        },
-        twitter: {
-          value: ''
-        },
-        gitHub: {
-          value: ''
-        },
-        instagram: {
-          value: ''
-        },
-        workExperience: {
-          label: 'Work experience',
-          positions: [
-            {
-              position: '',
-              employer: '',
-              description: '',
-              timeSpan: ''
-            }
-          ]
-        },
-        education: {
-          label: 'Education',
-          degrees: [
-            {
-              degree: '',
-              school: '',
-              timeSpan: ''
-            }
-          ]
-        },
-        skills1: {
-          label: 'Skills',
-          values: [
-            'Enter skill'
-          ]
-        },
-        skills2: {
-          label: 'Skills',
-          values: [
-            'Enter skill'
-          ]
-        }
-      }
+      cvData: this.defaultCvData || defaultCvData
     }
   },
   computed: {

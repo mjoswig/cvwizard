@@ -11,6 +11,11 @@
 <script>
 export default {
   name: 'ThankYouPage',
+  head() {
+    return {
+      title: 'Thank You - cvwizard'
+    }
+  },
   data() {
     return {
       remainingSeconds: 5

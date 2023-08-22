@@ -1,0 +1,104 @@
+{
+  "name": {
+    "value": "Charles Bloomberg"
+  },
+  "profession": {
+    "value": "Salesforce Developer - Operations"
+  },
+  "profile": {
+    "label": "Profile",
+    "value": "A certified Salesforce Developer with proven ability in developing custom solutions on the Salesforce platform to meet business needs. A proactive problem-solver with a collaborative mindset, an eagerness to learn, and a passion for delivering results."
+  },
+  "personalDetails": {
+    "label": "Personal details"
+  },
+  "birthDate": {
+    "label": "Birth date",
+    "value": ""
+  },
+  "nationality": {
+    "label": "Nationality",
+    "value": ""
+  },
+  "address": {
+    "label": "Address",
+    "value": "New York City, United States"
+  },
+  "maritalStatus": {
+    "label": "Marital status",
+    "value": ""
+  },
+  "contact": {
+    "label": "Contact"
+  },
+  "email": {
+    "value": "charlesbloomberg@wisc.edu"
+  },
+  "phoneNumber": {
+    "value": "(621) 799-5548"
+  },
+  "website": {
+    "value": ""
+  },
+  "linkedIn": {
+    "value": ""
+  },
+  "facebook": {
+    "value": ""
+  },
+  "twitter": {
+    "value": ""
+  },
+  "gitHub": {
+    "value": ""
+  },
+  "instagram": {
+    "value": ""
+  },
+  "workExperience": {
+    "label": "Work experience",
+    "positions": [
+      {
+        "position": "Salesforce Platform Operations Support",
+        "employer": "Company A",
+        "description": "- Supported the Salesforce Financial Service Cloud and Experience Cloud production environments of a banking institution.\n- Analyzed logs to determine root cause of issues and provided analysis reports and test documentation.\n- Proactively coordinated with business and development teams to promptly identify and escalate challenges, improving team collaboration and reducing the time to resolve issues.\n- Improved the team's Excel sheet tracker which reduced accuracy errors and time to create reports.",
+        "timeSpan": "June 2021 - Present"
+      },
+      {
+        "position": "Salesforce Developer",
+        "employer": "Company B",
+        "description": "- Collaborated closely with Team Lead to build and configure declarative and programmatic Salesforce solutions, including Apex Classes, Apex Triggers, and Batch Classes.\n- Created Users, Roles, Public Groups and implemented role hierarchies and sharing rules to manage record access among different users.\n- Wrote unit test cases to cover positive and negative use cases for Apex classes and triggers maintaining overall code coverage > 90%.\n- Developed an Apex web service that serves data to the client's external systems which reduced manual work and ensured the accuracy and the timeliness of data.\n- Performed deployments using Change Sets, Workbench, and Gearset and served as the delegate for sprint release deployments to the integration sandbox.\n\n\n\n\n\n\n\n\n",
+        "timeSpan": "June 2021 - Present"
+      },
+      {
+        "position": "Test Engineer",
+        "employer": "Company C",
+        "description": "- Automated regression tests by learning Robot Framework with minimal training.\n- Reduced outdated regression test scripts by 60% through an improvement initiative.\n- Continuously met 100% execution rate per cycle by planning the test strategy. Eased progress tracking by creating dashboard.",
+        "timeSpan": "June 2019 - June 2020"
+      }
+    ]
+  },
+  "education": {
+    "label": "Education",
+    "degrees": [
+      {
+        "degree": "B.Sc. in Computer Science",
+        "school": "New York University",
+        "timeSpan": "2017"
+      }
+    ]
+  },
+  "skills1": {
+    "label": "Technical Skills",
+    "values": [
+      "Apex", "Triggers", "SOQL", "Lightning", "Sales Cloud"
+    ]
+  },
+  "skills2": {
+    "label": "Tools",
+    "values": [
+      "Data Loader", "Salesforce DX", "JIRA", "Azure DevOps",
+      "Visual Studio Code", "Git", "Gearset"
+    ]
+  }
+}

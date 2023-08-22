@@ -1,0 +1,91 @@
+{
+  "name": {
+    "value": ""
+  },
+  "profession": {
+    "value": ""
+  },
+  "profile": {
+    "label": "Profile",
+    "value": ""
+  },
+  "personalDetails": {
+    "label": "Personal details"
+  },
+  "birthDate": {
+    "label": "Birth date",
+    "value": ""
+  },
+  "nationality": {
+    "label": "Nationality",
+    "value": ""
+  },
+  "address": {
+    "label": "Address",
+    "value": ""
+  },
+  "maritalStatus": {
+    "label": "Marital status",
+    "value": ""
+  },
+  "contact": {
+    "label": "Contact"
+  },
+  "email": {
+    "value": ""
+  },
+  "phoneNumber": {
+    "value": ""
+  },
+  "website": {
+    "value": ""
+  },
+  "linkedIn": {
+    "value": ""
+  },
+  "facebook": {
+    "value": ""
+  },
+  "twitter": {
+    "value": ""
+  },
+  "gitHub": {
+    "value": ""
+  },
+  "instagram": {
+    "value": ""
+  },
+  "workExperience": {
+    "label": "Work experience",
+    "positions": [
+      {
+        "position": "",
+        "employer": "",
+        "description": "",
+        "timeSpan": ""
+      }
+    ]
+  },
+  "education": {
+    "label": "Education",
+    "degrees": [
+      {
+        "degree": "",
+        "school": "",
+        "timeSpan": ""
+      }
+    ]
+  },
+  "skills1": {
+    "label": "Skills 1",
+    "values": [
+      "Enter skill"
+    ]
+  },
+  "skills2": {
+    "label": "Skills 2",
+    "values": [
+      "Enter skill"
+    ]
+  }
+}
