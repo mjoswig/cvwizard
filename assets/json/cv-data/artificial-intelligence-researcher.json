@@ -1,0 +1,100 @@
+{
+  "name": {
+    "value": "Charles Bloomberg"
+  },
+  "profession": {
+    "value": "Artificial Intelligence Researcher"
+  },
+  "profile": {
+    "label": "Profile",
+    "value": "A confident and highly accomplished professional with strong background in NLP/CL and demonstrated success in developing and implementing business strategies plan related to AI, IT, and social media development."
+  },
+  "personalDetails": {
+    "label": "Personal details"
+  },
+  "birthDate": {
+    "label": "Birth date",
+    "value": ""
+  },
+  "nationality": {
+    "label": "Nationality",
+    "value": ""
+  },
+  "address": {
+    "label": "Address",
+    "value": "New York City, United States"
+  },
+  "maritalStatus": {
+    "label": "Marital status",
+    "value": ""
+  },
+  "contact": {
+    "label": "Contact"
+  },
+  "email": {
+    "value": "charlesbloomberg@wisc.edu"
+  },
+  "phoneNumber": {
+    "value": "(621) 799-5548"
+  },
+  "website": {
+    "value": ""
+  },
+  "linkedIn": {
+    "value": ""
+  },
+  "facebook": {
+    "value": ""
+  },
+  "twitter": {
+    "value": ""
+  },
+  "gitHub": {
+    "value": ""
+  },
+  "instagram": {
+    "value": ""
+  },
+  "workExperience": {
+    "label": "Work experience",
+    "positions": [
+      {
+        "position": "Artificial Intelligence Research and Development Expert",
+        "employer": "Company A",
+        "description": "- Implementation of Artificial Intelligence in Fintech industry including insurance, lending, payment, and personal finance.\n- Executing proof of concepts to assess the value of AI use cases in education.\n- Active involvement with business development organization, marketing and design team for designing better products and addressing customer issues.\n- Developed an AI solution to solve problems in finance, including credit scoring, risk management, and optimization of portfolios.\n- Conducted research to develop an AI-driven approach to personalize customer's experience.\n- Lead research and development efforts that were focused on developing and implementing novel machine learning tools and techniques for various applications.\n- Helped building ontologies in the e-commerce and semantic search spaces.",
+        "timeSpan": "June 2021 - Present"
+      },
+      {
+        "position": "IT Business Consultant and Social Media Manager",
+        "employer": "Company B",
+        "description": "- Provided IT consulting services to companies in need of solutions to problem related to technology needs.\n- Assisted companies in selecting the appropriate solutions, developed implementation plans and assisted in implementation.\n- Designed and deployed custom automation tools, including support of live systems for 300+ customers.\n\n\n\n\n\n\n\n\n- Collaborated with other departments to implement new software, hardware, and network systems which increased productivity by 80% and improved customer service by 20%.\n- Conducted surveys and interviews to develop more personalized experience for clients, including using social media tools to gain brand recognition and visibility.\n- Provided consulting services to clients, advising on how to improve social media presence.\n- Identified and implemented new opportunities by identifying high potential customers and connecting with them and building and maintaining relationships.",
+        "timeSpan": "June 2020 - June 2021"
+      }
+    ]
+  },
+  "education": {
+    "label": "Education",
+    "degrees": [
+      {
+        "degree": "M.Sc. in Computer Linguistics",
+        "school": "Sharif University of Technology, Tehran, Iran",
+        "timeSpan": "2018"
+      },
+      {
+        "degree": "B.A. in English Language and Literature",
+        "school": "Razi University, Kermanshan, Iran",
+        "timeSpan": "2014"
+      }
+    ]
+  },
+  "skills1": {
+    "label": "Technical Skills",
+    "values": [
+      "Python", "Matlab", "SQL"
+    ]
+  },
+  "skills2": {
+    "label": "Areas of Focus",
+    "values": []
+  }
+}
