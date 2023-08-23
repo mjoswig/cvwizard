@@ -178,9 +178,9 @@
                       </svg>
                     </div>
                   </div>
-                  <div class="flex space-x-2 items-center">
+                  <div class="flex space-x-2 items-start">
                     <div>
-                      <div class="h-4 w-4 rounded-full" :style="{ 'background-color': settings.color.hex }"></div>
+                      <div class="h-4 w-4 rounded-full" :class="{ 'mt-2': settings.textSize === 'small', 'mt-3': settings.textSize === 'medium', 'mt-4': settings.textSize === 'large' }" :style="{ 'background-color': settings.color.hex }"></div>
                     </div>
                     <div class="w-full">
                       <TextField :dl-fix="isDownloading" class="block font-bold w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" :style="{ 'color': settings.color.hex }" type="text" placeholder="Position" v-model="cvData.workExperience.positions[indexWx].position" />
@@ -217,9 +217,9 @@
                       </svg>
                     </div>
                   </div>
-                  <div class="flex space-x-2 items-center">
+                  <div class="flex space-x-2 items-start">
                     <div>
-                      <div class="h-4 w-4 rounded-full" :style="{ 'background-color': settings.color.hex }"></div>
+                      <div class="h-4 w-4 rounded-full"  :class="{ 'mt-2': settings.textSize === 'small', 'mt-3': settings.textSize === 'medium', 'mt-4': settings.textSize === 'large' }" :style="{ 'background-color': settings.color.hex }"></div>
                     </div>
                     <div class="w-full">
                       <TextField :dl-fix="isDownloading" class="block font-bold w-3/4" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" :style="{ 'color': settings.color.hex }" type="text" placeholder="Degree" v-model="cvData.education.degrees[indexEd].degree" />
