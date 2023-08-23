@@ -95,6 +95,8 @@
   },
   "skills2": {
     "label": "Areas of Focus",
-    "values": []
+    "values": [
+      "Enter skill"
+    ]
   }
 }

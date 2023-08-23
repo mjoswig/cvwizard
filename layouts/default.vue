@@ -266,12 +266,16 @@ header, main, footer {
   background-color: #f4f4f4;
 }
 
-.text-purple-brand {
-  color: #a600ff;
+.cv-page {
+  @apply flex flex-col items-center justify-center w-full;
+}
+.cv-page section {
+  @apply w-full;
+  max-width: 21cm;
 }
 
-#viewer {
-  display: none;
+.text-purple-brand {
+  color: #a600ff;
 }
 
 @media (max-width: 1280px) {

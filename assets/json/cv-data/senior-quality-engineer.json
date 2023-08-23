@@ -1,0 +1,121 @@
+{
+  "name": {
+    "value": "Charles Bloomberg"
+  },
+  "profession": {
+    "value": "Senior Quality Engineer"
+  },
+  "profile": {
+    "label": "Profile",
+    "value": "Advanced Quality Engineer with 18 years of experience in ensuring production quality from start to finish in the automotive industry. Proven understanding of ISO quality management systems, industrial processes, and continuous improvement methodologies. Applying for the position of Quality Engineer to drive corrective actions and improve quality in a consistent manner."
+  },
+  "personalDetails": {
+    "label": "Personal details"
+  },
+  "birthDate": {
+    "label": "Birth date",
+    "value": ""
+  },
+  "nationality": {
+    "label": "Nationality",
+    "value": ""
+  },
+  "address": {
+    "label": "Address",
+    "value": "New York City, United States"
+  },
+  "maritalStatus": {
+    "label": "Marital status",
+    "value": ""
+  },
+  "contact": {
+    "label": "Contact"
+  },
+  "email": {
+    "value": "charlesbloomberg@wisc.edu"
+  },
+  "phoneNumber": {
+    "value": "(621) 799-5548"
+  },
+  "website": {
+    "value": ""
+  },
+  "linkedIn": {
+    "value": ""
+  },
+  "facebook": {
+    "value": ""
+  },
+  "twitter": {
+    "value": ""
+  },
+  "gitHub": {
+    "value": ""
+  },
+  "instagram": {
+    "value": ""
+  },
+  "workExperience": {
+    "label": "Work experience",
+    "positions": [
+      {
+        "position": "Customer Service Professional",
+        "employer": "Company A",
+        "description": "- As a Customer Service Professional, answered phone calls from customers who needed help with vaccination registration process.\n- Guided customers regarding the vaccination process within defined Average Handle Time and First Call Resolution.\n- Appointment coordination for COVID-19 vaccination for all 50 vaccination centers in the state of north rhine-Westphalia.",
+        "timeSpan": "June 2020 - June 2021"
+      },
+      {
+        "position": "Quality Consultant",
+        "employer": "Company B",
+        "description": "- Conducted supplier system audits, ensuring that customer requirements were met and audit results considered within customer supplier evaluation by defining corrective actions.\n- Moderated FMEA workshop for a cobot project to mitigate risk associated with and avoid future quality issues.\n- Involved in creating a quality project toolbox, a repository of quality project documents and templates accessible to all Quality Consultants.",
+        "timeSpan": "June 2019 - June 2020"
+      },
+      {
+        "position": "FMEA Engineer",
+        "employer": "Company C",
+        "description": "- Facilitated FMEA Meetings with project leaders to identify and reduce failure risks of safety-critical components and systems.\n- Created and updated internal FMEA Process instructions to help teams understand the FMEA process and document the results in compliance with customer and automotive (AIAG-VDA) requirements.\n\n\n\n\n\n\n\n",
+        "timeSpan": "June 2018 - June 2019"
+      },
+      {
+        "position": "FMEA Coordinator",
+        "employer": "Company D",
+        "description": "- Methodically supported customer projects with System and Product FMEA, improving quality by identifying and mitigating the risk of failure before the product launch.\n- Moderated FMEA meetings of a pre-development project.\n- Completed internal company training of FMEA with APIS IQ-FMEA Software.",
+        "timeSpan": "June 2017 - June 2018"
+      },
+      {
+        "position": "Advanced Quality Engineer",
+        "employer": "Company E",
+        "description": "- Using APQP and customer requirements to initiate, coordinate, and implement preventive quality countermeasures.",
+        "timeSpan": "June 2016 - June 2017"
+      },
+      {
+        "position": "Quality Engineer",
+        "employer": "Company F",
+        "description": "- Chaired and facilitated powertrain team meetings as program engineer to solve cross functional tasks (quality, cost, time and functionality).\n- Ensured the quality of powertrain projects for all gateways by defining and constructing new tasks based on project deliverables.",
+        "timeSpan": "June 2015 - June 2016"
+      }
+    ]
+  },
+  "education": {
+    "label": "Education",
+    "degrees": [
+      {
+        "degree": "Academically qualified Industrial Engineer",
+        "school": "University of Applied Science Gelsenkirchen, Germany",
+        "timeSpan": "2003"
+      }
+    ]
+  },
+  "skills1": {
+    "label": "Industry Knowledge",
+    "values": [
+      "Enter skill"
+    ]
+  },
+  "skills2": {
+    "label": "Technical Skills",
+    "values": [
+      "Enter skill"
+    ]
+  }
+}

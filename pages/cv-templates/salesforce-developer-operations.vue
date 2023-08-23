@@ -1,12 +1,13 @@
 <template>
-  <article class="page-content">
+  <article class="page-content cv-page">
     <section class="mb-12">
       <h1 class="text-purple-brand sm:text-center mb-4">Salesforce Developer - Operations CV Template</h1>
       <p class="sm:text-center text-xl">You spent weeks trying to write a CV but still can't find the right words? Our sample CV helps Salesforce Developers like you to land their next job.</p>
     </section>
-    <section>
+    <section class="mb-12">
       <CVBuilder :show-toolbar="true" :is-downloading="isDownloading" :show-watermark="showWatermark" :default-cv-data="cvData" />
     </section>
+    <FaqSection />
   </article>
 </template>
 
@@ -25,21 +26,6 @@ export default {
     return {
       cvData
     }
-  },
-  computed: {
-    currentYear() {
-      return new Date().getFullYear()
-    }
   }
 }
 </script>
-
-<style scoped>
-.page-content {
-  @apply flex flex-col items-center justify-center w-full;
-}
-.page-content section {
-  @apply w-full;
-  max-width: 21cm;
-}
-</style>
