@@ -8,7 +8,7 @@
       </div>
     </section>
     <section>
-      <h2 class="mb-8">Programming CV examples</h2>
+      <h2 class="mb-7">Programming CV examples</h2>
       <div class="grid grid-cols-3 gap-6">
         <nuxt-link to="/cv-templates/salesforce-developer-operations">
           <img class="shadow-sm mb-6" src="@/assets/images/cv-data/salesforce-developer-operations.png" />
