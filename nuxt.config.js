@@ -94,7 +94,14 @@ export default {
 
   // Sitemap Configuration
   sitemap: {
-    hostname: 'https://cvwizard.online'
+    hostname: 'https://cvwizard.online',
+    routes: async () => {
+      const fs = require('fs')
+      let files = fs.readdirSync('./assets/json/cv-data')
+      files = files.filter(file => file !== 'default.json')
+      let routes = files.map(file => `/cv-templates/${file.split('.json')[0]}`)
+      return routes
+    }
   },
 
   // Axios Configuration
