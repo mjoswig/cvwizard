@@ -40,7 +40,7 @@
     </div>
     <div class="flex justify-center w-full" :class="fontClass">
       <div id="cv" ref="cv" class="relative bg-white shadow-lg w-full">
-        <div v-for="(page, index) in pageMarkers" :key="index" class="page-marker" :class="{ 'hidden': isDownloading }" :style="{ 'top': `${index * 1096}px` }">
+        <div v-for="(page, index) in pageMarkers" :key="index" class="page-marker" :class="{ 'hidden': isDownloading }" :style="{ 'top': `${(index + 1) * 1096}px` }">
           <span class="absolute bottom-1 left-1 text-gray-400 text-xs">Please add 5-6 line breaks to separate pages</span>
         </div>
         <span v-show="showWatermark" class="absolute top-8 right-8 font-bold text-sm text-right uppercase w-full" style="margin-left: -1cm;">
@@ -514,8 +514,7 @@ export default {
   padding: 10mm !important;
 }
 .page-marker {
-  @apply absolute top-0 left-0 border-b border-gray-300;
+  @apply absolute top-0 left-0 border-b border-gray-300 bg-red-100;
   width: 100%;
-  height: 29cm;
 }
 </style>
