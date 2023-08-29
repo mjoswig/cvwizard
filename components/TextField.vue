@@ -1,7 +1,7 @@
 <template>
   <div class="w-full" style="min-width: 125px;">
     <textarea class="p-2 resize-none overflow-hidden w-full" :placeholder="placeholder" ref="textarea" rows="1" @change="inputValue = $event.target.value" @focus="resize" @keyup="resize" @blur="showInput = false" v-show="showInput" v-model="inputValue"></textarea>
-    <div class="p-2 w-full" :class="{ 'text-gray-300': !inputValue, 'dl-fix': dlFix }" style="white-space: pre-wrap;" @click="showInput = true" v-show="!showInput">{{ value || placeholder }}</div>
+    <div class="p-2 w-full" :class="{ 'text-gray-300': !inputValue, 'dl-fix': dlFix }" ref="label" style="white-space: pre-wrap;" @click="showInput = true" v-show="!showInput">{{ value || placeholder }}</div>
   </div>
 </template>
 
@@ -24,7 +24,7 @@
       }
     },
     mounted() {
-      this.resize()
+      this.$refs.textarea.style.height = this.$refs.label.clientHeight + 'px'
     },
     methods: {
       resize() {
