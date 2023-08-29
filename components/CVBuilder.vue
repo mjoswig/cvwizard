@@ -68,8 +68,8 @@
             <TextField :dl-fix="isDownloading" class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Your profession or specialty" v-model="cvData.profession.value" v-show="settings.sectionVisibility.profession" />
           </div>
         </div>
-        <div class="flex space-x-8 mt-4">
-          <div class="mt-1" style="width: 7cm;">
+        <div class="flex mt-4" :class="{ 'space-x-8': leftColumnVisible && rightColumnVisible }">
+          <div class="mt-1" :style="{ 'width': rightColumnVisible ? '7cm' : '100%' }" v-show="leftColumnVisible">
             <div v-show="settings.sectionVisibility.profile">
               <TextField :dl-fix="isDownloading" class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Profile" v-model="cvData.profile.label" />
               <TextField :dl-fix="isDownloading" class="block w-full" :class="{ 'text-xs': settings.textSize === 'small', 'text-sm': settings.textSize === 'medium', 'text-lg': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Write here a paragraph about yourself." v-model="cvData.profile.value" />
@@ -161,7 +161,7 @@
               <TextField :dl-fix="isDownloading" class="block w-full" :class="{ 'text-xs': settings.textSize === 'small', 'text-sm': settings.textSize === 'medium', 'text-lg': settings.textSize === 'large' }" type="text" placeholder="Enter only your username" v-model="cvData.instagram.value" />
             </div>
           </div>
-          <div style="width: 14cm;">
+          <div :style="{ 'width': leftColumnVisible ? '14cm' : '100%' }" v-show="rightColumnVisible">
             <div v-show="settings.sectionVisibility.workExperience">
               <TextField :dl-fix="isDownloading" class="block font-bold uppercase w-full" :class="{ 'text-sm': settings.textSize === 'small', 'text-lg': settings.textSize === 'medium', 'text-2xl': settings.textSize === 'large' }" :text-size="settings.textSize" type="text" placeholder="Work experience" v-model="cvData.workExperience.label" />
               <div class="flex flex-col w-full">
@@ -304,7 +304,7 @@
           <hr class="mt-4 mb-2" />
           <div>
             <b class="uppercase">Contact</b>
-            <Toggle class="my-2 uppercase" label="Email" :disabled="true" v-model="settings.sectionVisibility.email" />
+            <Toggle class="my-2 uppercase" label="Email" v-model="settings.sectionVisibility.email" />
             <Toggle class="mb-2 uppercase" label="Phone number" v-model="settings.sectionVisibility.phoneNumber" />
             <Toggle class="mb-2 uppercase" label="Website" v-model="settings.sectionVisibility.website" />
             <Toggle class="mb-2 uppercase" label="LinkedIn" v-model="settings.sectionVisibility.linkedIn" />
@@ -319,7 +319,7 @@
             <Toggle class="mb-2 uppercase" label="Name" :disabled="true" v-model="settings.sectionVisibility.name" />
             <Toggle class="mb-2 uppercase" label="Profession" v-model="settings.sectionVisibility.profession" />
             <Toggle class="mb-2 uppercase" label="Work experience" v-model="settings.sectionVisibility.workExperience" />
-            <Toggle class="uppercase" label="Education" :disabled="true" v-model="settings.sectionVisibility.education" />
+            <Toggle class="uppercase" label="Education" v-model="settings.sectionVisibility.education" />
           </div>
           <hr class="mt-4 mb-2" />
           <div>
@@ -395,6 +395,31 @@ export default {
     },
     pageCount() {
       return this.cvHeight / 1122.52
+    },
+    leftColumnVisible() {
+      return (
+        this.settings.sectionVisibility.profile
+        || this.settings.sectionVisibility.birthDate
+        || this.settings.sectionVisibility.nationality
+        || this.settings.sectionVisibility.address
+        || this.settings.sectionVisibility.maritalStatus
+        || this.settings.sectionVisibility.email
+        || this.settings.sectionVisibility.phoneNumber
+        || this.settings.sectionVisibility.website
+        || this.settings.sectionVisibility.linkedIn
+        || this.settings.sectionVisibility.facebook
+        || this.settings.sectionVisibility.twitter
+        || this.settings.sectionVisibility.gitHub
+        || this.settings.sectionVisibility.instagram
+      )
+    },
+    rightColumnVisible() {
+      return (
+        this.settings.sectionVisibility.workExperience
+        || this.settings.sectionVisibility.education
+        || this.settings.sectionVisibility.skills1
+        || this.settings.sectionVisibility.skills2
+      )
     }
   },
   watch: {
