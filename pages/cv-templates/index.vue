@@ -9,18 +9,18 @@
     </section>
     <section>
       <h2 class="mb-7">Programming CV examples</h2>
-      <div class="grid grid-cols-3 gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
         <nuxt-link to="/cv-templates/salesforce-developer-operations">
-          <img class="shadow-sm mb-6" src="@/assets/images/cv-data/salesforce-developer-operations.png" />
-          <h3 class="text-xl">Salesforce Developer - Operations CV</h3>
+          <img class="shadow-sm mb-3 md:mb-6" src="@/assets/images/cv-data/salesforce-developer-operations.png" />
+          <span class="block text-lg md:text-xl">Salesforce Developer - Operations CV</span>
         </nuxt-link>
         <nuxt-link to="/cv-templates/artificial-intelligence-researcher">
-          <img class="shadow-sm mb-6" src="@/assets/images/cv-data/artificial-intelligence-researcher.png" />
-          <h3 class="text-xl">Artificial Intelligence Researcher CV</h3>
+          <img class="shadow-sm mb-3 md:mb-6" src="@/assets/images/cv-data/artificial-intelligence-researcher.png" />
+          <span class="block text-lg md:text-xl">Artificial Intelligence Researcher CV</span>
         </nuxt-link>
         <nuxt-link to="/cv-templates/senior-quality-engineer">
-          <img class="shadow-sm mb-6" src="@/assets/images/cv-data/senior-quality-engineer.png" />
-          <h3 class="text-xl">Senior Quality Engineer CV</h3>
+          <img class="shadow-sm mb-3 md:mb-6" src="@/assets/images/cv-data/senior-quality-engineer.png" />
+          <span class="block text-lg md:text-xl">Senior Quality Engineer CV</span>
         </nuxt-link>
       </div>
     </section>

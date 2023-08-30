@@ -2,12 +2,12 @@
   <div id="app" class="app flex justify-center">
     <div class="wrapper w-full">
       <header>
-        <div class="p-8 flex items-center justify-between">
+        <div class="px-4 pt-4 pb-8 md:p-8 flex items-center justify-between">
           <div>
             <nuxt-link to="/"><img class="w-20 h-auto" src="@/assets/images/logo.png" /></nuxt-link>
           </div>
-          <div class="flex flex-col space-y-4 items-end sm:flex-row sm:items-center sm:space-x-12 sm:space-y-0 text-lg">
-            <nuxt-link to="/cv-templates">Free CV Templates</nuxt-link>
+          <div class="flex items-center space-x-12 text-lg">
+            <nuxt-link class="hidden sm:inline-block" to="/cv-templates">Free CV Templates</nuxt-link>
             <Btn @click="openPaywallModal">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
                 <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
@@ -20,24 +20,24 @@
       <main>
         <nuxt-child :is-downloading="isDownloadingFreePdf || isDownloadingStandardPdf" :show-watermark="isDownloadingFreePdf" />
       </main>
-      <footer class="flex flex-col items-center px-8 pb-8 pt-2 text-sm">
+      <footer class="flex flex-col items-center px-4 pb-4 md:px-8 md:pb-8 pt-6 text-sm">
         <div>
           <p>Copyright &copy; {{ copyrightYear }} cvwizard.online – a solution by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions</a>. All rights reserved.</p>
         </div>
       </footer>
     </div>
     <Modal v-show="showPaywallModal" max-width="750px" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showPaywallModal = false">
-      <div class="grid grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-8">
         <div>
           <b class="block text-gray-500 text-3xl mb-4">Free Download</b>
           <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs <b>with watermark</b>.</p>
           <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
           <div class="relative text-lg">
-            <div v-show="!canDownloadFreePdf" class="absolute h-full w-full bg-gray-100 opacity-50" style="max-width: 175px;"></div>
+            <div v-show="!canDownloadFreePdf" class="absolute h-full w-full bg-gray-100 opacity-50" style="max-width: 100vw;"></div>
             <span v-show="!canDownloadFreePdf">🔒</span>
             <a class="cursor-pointer" href="#" @click.prevent="downloadFreePdf">Download Free CV</a>
           </div>
-          <div v-show="!canDownloadFreePdf" class="flex space-x-4 mt-6">
+          <div v-show="!canDownloadFreePdf" class="flex justify-center md:justify-start space-x-4 mt-6">
             <a :href="facebookShareUrl" target="_blank" class="text-gray-500 bg-gray-100 border rounded-md shadow-sm p-2 w-fit" @click.prevent="openShareWindow(facebookShareUrl, 'Share on Facebook', 750, 500)">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
@@ -62,7 +62,9 @@
             <li>✅ No watermark</li>
           </ul>
           <p class="text-gray-500 text-sm mb-6">You'll be redirected to a download page after payment is complete.</p>
-          <Btn class="text-lg" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
+          <div class="flex justify-center md:justify-start">
+            <Btn class="text-lg w-full md:w-max" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
+          </div>
         </div>
       </div>
     </Modal>
@@ -262,7 +264,7 @@ header, main, footer {
 }
 
 .page-content {
-  @apply p-8;
+  @apply p-4 md:p-8;
   background-color: #f4f4f4;
 }
 

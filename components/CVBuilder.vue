@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="showToolbar" class="flex justify-center mb-8 w-full">
+    <div v-show="showToolbar" class="mb-8 w-full">
       <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-2 md:grid-cols-4" style="max-width: 21cm;">
         <div class="p-4">
           <div class="flex justify-center">
@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center w-full" :class="fontClass">
+    <div class="overflow-x-scroll w-full" :class="fontClass">
       <div id="cv" ref="cv" class="relative bg-white shadow-lg w-full">
         <div v-for="(page, index) in pageMarkers" :key="index" class="page-marker" :class="{ 'hidden': isDownloading }" :style="{ 'top': `${(index + 1) * 1096}px` }">
           <span class="absolute bottom-1 left-1 text-gray-400 text-xs">Please add 5-6 line breaks to separate pages</span>
@@ -533,9 +533,7 @@ export default {
 }
 
 #cv {
-  width: 100%;
-  max-width: 21cm !important;
-  /*height: 29cm !important;*/
+  width: 21cm;
   padding: 10mm !important;
 }
 .page-marker {
