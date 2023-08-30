@@ -1,6 +1,6 @@
 {
   "name": "cvwizard",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -21,7 +21,6 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "nuxt": "^2.15.8",
-    "redirect-ssl": "^3.0.0",
     "stripe": "^13.1.0",
     "uuidv4": "^6.2.13",
     "vue": "^2.7.10",
