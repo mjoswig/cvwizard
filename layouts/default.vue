@@ -33,7 +33,7 @@
           <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs <b>with watermark</b>.</p>
           <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
           <div class="relative text-lg">
-            <div v-show="!canDownloadFreePdf" class="absolute h-full w-full bg-gray-100 opacity-50" style="max-width: 100vw;"></div>
+            <div v-show="!canDownloadFreePdf" class="download-lock absolute h-full w-full bg-gray-100 opacity-50"></div>
             <span v-show="!canDownloadFreePdf">🔒</span>
             <a class="cursor-pointer" href="#" @click.prevent="downloadFreePdf">Download Free CV</a>
           </div>
@@ -247,12 +247,12 @@ a {
 }
 
 .app {
-  background-color: #ffffff;
+  background-color: #f4f4f4;
 }
 
 .wrapper,
 header {
-  max-width: 1400px;
+  max-width: 1280px;
 }
 
 header, main, footer {
@@ -278,6 +278,10 @@ header, main, footer {
 
 .text-purple-brand {
   color: #a600ff;
+}
+
+.download-lock {
+  max-width: 175px;
 }
 
 @media (max-width: 1280px) {
@@ -322,6 +326,12 @@ header, main, footer {
   .wrapper,
   header {
     max-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .download-lock {
+    max-width: 100vw;
   }
 }
 </style>

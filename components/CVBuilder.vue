@@ -1,15 +1,15 @@
 <template>
   <div>
     <div v-show="showToolbar" class="mb-8 w-full">
-      <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-2 md:grid-cols-4" style="max-width: 21cm;">
-        <div class="p-4">
+      <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-4 md:grid-cols-4 gap-4 md:gap-6 py-4" style="max-width: 21cm;">
+        <div>
           <div class="flex justify-center">
-            <div class="h-8 w-8 cursor-pointer rounded-full mb-2" :style="{ 'background-color': settings.color.hex }" @click="openColorPicker"></div>
+            <div class="h-8 w-8 cursor-pointer rounded-full sm:mb-2" :style="{ 'background-color': settings.color.hex }" @click="openColorPicker"></div>
           </div>
-          <span class="uppercase text-white">Color</span>
+          <span class="hidden sm:block uppercase text-white">Color</span>
         </div>
-        <div class="p-4">
-          <select class="block mb-1 p-2 w-full" v-model="settings.typography">
+        <div>
+          <select class="block sm:mb-1 p-2 w-full" v-model="settings.typography">
             <option value="fira-sans">Fira Sans</option>
             <option value="inconsolata">Inconsolata</option>
             <option value="karla">Karla</option>
@@ -18,23 +18,23 @@
             <option value="poppins">Poppins</option>
             <option value="saira-semi-condensed">Saira Semi Condensed</option>
           </select>
-          <span class="uppercase text-white">Typography</span>
+          <span class="hidden sm:block uppercase text-white">Typography</span>
         </div>
-        <div class="p-4">
+        <div>
           <div>
             <span class="cursor-default" :class="{ 'inactive-text-size-option': settings.textSize !== 'small' }" :style="{ 'color': settings.textSize === 'small' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'small'">A</span>
             <span class="cursor-default text-2xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'medium' }" :style="{ 'color': settings.textSize === 'medium' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'medium'">A</span>
             <span class="cursor-default text-4xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'large' }" :style="{ 'color': settings.textSize === 'large' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'large'">A</span>
           </div>
-          <span class="uppercase text-white">Text size</span>
+          <span class="hidden sm:block uppercase text-white">Text size</span>
         </div>
-        <div class="p-4">
-          <div class="flex justify-center text-white mb-2">
+        <div>
+          <div class="flex justify-center text-white sm:mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-grid-1x2-fill" viewBox="0 0 16 16" @click="openSectionManagement">
               <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
             </svg>
           </div>
-          <span class="uppercase text-white">Sections</span>
+          <span class="hidden sm:block uppercase text-white">Sections</span>
         </div>
       </div>
     </div>
