@@ -49,7 +49,7 @@
         <div class="flex items-center w-full">
           <div class="mr-8" style="width: 7cm;" v-show="settings.sectionVisibility.picture">
             <label for="cv-picture">
-              <div class="profile-picture-placeholder bg-gray-100 cursor-pointer h-48 w-48 flex items-center justify-center rounded-full">
+              <div class="profile-picture-placeholder bg-gray-100 cursor-pointer flex items-center justify-center rounded-full" :class="{ 'h-36 w-36': settings.textSize == 'small', 'h-48 w-48': settings.textSize != 'small' }">
                 <div v-show="profilePictureFileBase64 === null">
                   <div class="flex justify-center mb-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
@@ -57,7 +57,7 @@
                       <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
                     </svg>
                   </div>
-                  <span class="font-bold text-sm text-gray-400 uppercase">Select your picture</span>
+                  <span class="font-bold text-gray-400 uppercase" :class="{ 'text-xs': settings.textSize == 'small', 'text-sm': settings.textSize != 'small' }">Select your picture</span>
                 </div>
               </div>
             </label>
