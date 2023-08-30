@@ -140,7 +140,7 @@ export default {
           hotfixes: ['px_scaling']
         })
 
-        return html2canvas(document.querySelector('#cv')).then((canvas) => {
+        return html2canvas(document.querySelector('#cv'), { scale: 1.1 }).then((canvas) => {
           const imgWidth = doc.internal.pageSize.getWidth()
           const pageHeight = doc.internal.pageSize.getHeight()
           const imgHeight = (canvas.height * imgWidth) / canvas.width
