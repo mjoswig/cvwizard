@@ -578,6 +578,7 @@ export default {
       this.pageMarkers = Array(Math.floor(this.pageCount)).fill(0)
     },
     openShareWindow(url, title, w, h) {
+      this.sendTelegramNotification(`New click on "${title}"`)
       const left = screen.width / 2 - w / 2;
       const top = screen.height / 2 - h / 2;
       window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left)

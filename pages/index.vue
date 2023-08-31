@@ -39,7 +39,6 @@
 <script>
 export default {
   name: 'IndexPage',
-  props: ['isDownloading', 'showWatermark'],
   computed: {
     currentYear() {
       return new Date().getFullYear()
