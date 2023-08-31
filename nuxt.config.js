@@ -111,6 +111,12 @@ export default {
     baseURL: '/'
   },
 
+  // Environment Configuration
+  env: {
+    telegramBotApiKey: process.env.TELEGRAM_BOT_API_KEY || null,
+    telegramBotChatId: process.env.TELEGRAM_BOT_CHAT_ID || null
+  },
+
   // Toast Configuration
   toast: {
     position: 'top-center',

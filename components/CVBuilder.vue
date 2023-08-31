@@ -586,6 +586,7 @@ export default {
       }, 1000)
     },
     async buyNow() {
+      this.sendTelegramNotification('New click on "Buy Now"')
       this.isLoadingCheckout = true
 
       this.isDownloadingStandardPdf = true
@@ -629,8 +630,10 @@ export default {
           }
 
           if (saveFile) {
+            this.sendTelegramNotification('Free PDF generated')
             doc.save('cv.pdf')
           } else {
+            this.sendTelegramNotification('Paid PDF generated')
             return doc.output('blob')
           }
         })
@@ -649,10 +652,17 @@ export default {
     openPaywallModal() {
       document.body.classList.add('modal-open')
       this.showPaywallModal = true
+      this.sendTelegramNotification('New click on "Download"')
     },
     saveProgress() {
       this.$store.commit('SET_CV_DATA', this.cvData)
       this.$toast.success('Saved progress in local storage')
+      this.sendTelegramNotification('New click on "Save"')
+    },
+    async sendTelegramNotification(event) {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+      const text = `${event}\n\nTimezone: ${tz}`
+      await this.$axios.$post(`https://api.telegram.org/bot${process.env.telegramBotApiKey}/sendMessage?chat_id=${process.env.telegramBotChatId}&text=${encodeURIComponent(text)}`)
     }
   },
   mounted() {
