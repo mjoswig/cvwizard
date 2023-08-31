@@ -90,7 +90,7 @@ export default {
   },
 
   // Google Analytics Configuration
-  googleAnalytics: {
+  'google-gtag': {
     id: 'G-SLD1FGYGSZ'
   },
 
