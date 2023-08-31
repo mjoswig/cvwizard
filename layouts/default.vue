@@ -18,7 +18,7 @@
       <footer class="flex flex-col items-center px-4 pb-4 md:px-8 md:pb-8 pt-6 text-sm">
         <div>
           <p class="sm:text-center mb-1"><b>Support:</b> cvwizard@joswigsolutions.com</p>
-          <p>Copyright &copy; {{ copyrightYear }} cvwizard.online – a solution by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions</a>. All rights reserved.</p>
+          <p>Copyright &copy; {{ copyrightYear }} cvwizard – a solution by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions</a>. All rights reserved.</p>
         </div>
       </footer>
     </div>
