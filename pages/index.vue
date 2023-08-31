@@ -5,7 +5,7 @@
       <p class="sm:text-center text-xl">cvwizard is a free, easy-to-use CV Builder to create your CV online.</p>
     </section>
     <section class="mb-14">
-      <CVBuilder :show-toolbar="true" :is-downloading="isDownloading" :show-watermark="showWatermark" />
+      <CVBuilder :show-toolbar="true" />
     </section>
     <section class="mb-12">
       <h2 class="sm:text-center mb-4">The best free CV Builder in {{ currentYear }}</h2>

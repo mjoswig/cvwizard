@@ -1,15 +1,15 @@
 <template>
   <div>
     <div v-show="showToolbar" class="mb-8 w-full">
-      <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-4 md:grid-cols-4 gap-4 md:gap-6 py-4" style="max-width: 21cm;">
+      <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 py-4" style="max-width: 21cm;">
         <div>
           <div class="flex justify-center">
-            <div class="h-8 w-8 cursor-pointer rounded-full sm:mb-2" :style="{ 'background-color': settings.color.hex }" @click="openColorPicker"></div>
+            <div class="h-8 w-8 cursor-pointer rounded-full mb-2" :style="{ 'background-color': settings.color.hex }" @click="openColorPicker"></div>
           </div>
-          <span class="hidden sm:block uppercase text-white">Color</span>
+          <span class="uppercase text-white">Color</span>
         </div>
         <div>
-          <select class="block sm:mb-1 p-2 w-full" v-model="settings.typography">
+          <select class="block mb-1 p-2 w-full" v-model="settings.typography">
             <option value="fira-sans">Fira Sans</option>
             <option value="inconsolata">Inconsolata</option>
             <option value="karla">Karla</option>
@@ -18,7 +18,7 @@
             <option value="poppins">Poppins</option>
             <option value="saira-semi-condensed">Saira Semi Condensed</option>
           </select>
-          <span class="hidden sm:block uppercase text-white">Typography</span>
+          <span class="uppercase text-white">Typography</span>
         </div>
         <div>
           <div>
@@ -26,15 +26,31 @@
             <span class="cursor-default text-2xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'medium' }" :style="{ 'color': settings.textSize === 'medium' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'medium'">A</span>
             <span class="cursor-default text-4xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'large' }" :style="{ 'color': settings.textSize === 'large' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'large'">A</span>
           </div>
-          <span class="hidden sm:block uppercase text-white">Text size</span>
+          <span class="uppercase text-white">Text size</span>
         </div>
         <div>
-          <div class="flex justify-center text-white sm:mb-2">
+          <div class="flex justify-center text-white mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-grid-1x2-fill" viewBox="0 0 16 16" @click="openSectionManagement">
               <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
             </svg>
           </div>
-          <span class="hidden sm:block uppercase text-white">Sections</span>
+          <span class="uppercase text-white">Sections</span>
+        </div>
+        <div>
+          <div class="flex justify-center text-white mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-save" viewBox="0 0 16 16">
+              <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+            </svg>
+          </div>
+          <span class="uppercase text-white">Save</span>
+        </div>
+        <div>
+          <div class="flex justify-center text-white mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fdba74" class="cursor-pointer bi bi-filetype-pdf" viewBox="0 0 16 16" @click="openPaywallModal">
+              <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
+            </svg>
+          </div>
+          <span class="uppercase" style="color: #fdba74;">Download</span>
         </div>
       </div>
     </div>
@@ -333,15 +349,60 @@
         </div>
       </div>
     </Modal>
+    <Modal v-show="showPaywallModal" max-width="750px" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showPaywallModal = false">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <b class="block text-gray-500 text-3xl mb-4">Free Download</b>
+          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs <b>with watermark</b>.</p>
+          <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
+          <div class="relative text-lg">
+            <div v-show="!canDownloadFreePdf" class="download-lock absolute h-full w-full bg-gray-100 opacity-50"></div>
+            <span v-show="!canDownloadFreePdf">🔒</span>
+            <a class="cursor-pointer" href="#" @click.prevent="downloadFreePdf">Download Free CV</a>
+          </div>
+          <div v-show="!canDownloadFreePdf" class="flex justify-center md:justify-start space-x-4 mt-6">
+            <a :href="facebookShareUrl" target="_blank" class="text-gray-500 bg-gray-100 border rounded-md shadow-sm p-2 w-fit" @click.prevent="openShareWindow(facebookShareUrl, 'Share on Facebook', 750, 500)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+              </svg>
+            </a>
+            <a :href="twitterShareUrl" target="_blank" class="text-gray-500 bg-gray-100 border rounded-md shadow-sm p-2 w-fit" @click.prevent="openShareWindow(twitterShareUrl, 'Share on Twitter', 750, 500)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+              </svg>
+            </a>
+            <a :href="linkedInShareUrl" target="_blank" class="text-gray-500 bg-gray-100 border rounded-md shadow-sm p-2 w-fit" @click.prevent="openShareWindow(linkedInShareUrl, 'Share on LinkedIn', 750, 500)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <b class="block text-purple-brand text-3xl mb-2">Standard Download</b>
+          <span class="font-bold inline-block mb-4 text-3xl"><span class="text-xl" style="margin-right: 4px;">$</span>7<sup class="text-lg">.95</sup><span class="font-normal text-base"> per download</span></span>
+          <ul class="text-lg mb-5">
+            <li>✅ No watermark</li>
+          </ul>
+          <p class="text-gray-500 text-sm mb-6">You'll be redirected to a download page after payment is complete.</p>
+          <div class="flex justify-center md:justify-start">
+            <Btn class="text-lg w-full md:w-max" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
+          </div>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid'
+import{ jsPDF } from 'jspdf'
+import html2canvas from 'html2canvas'
 import defaultCvData from '@/assets/json/cv-data/default.json'
 
 export default {
   name: 'CVBuilder',
-  props: ['showToolbar', 'isDownloading', 'showWatermark', 'defaultCvData'],
+  props: ['showToolbar', 'defaultCvData'],
   data() {
     return {
       cvHeight: 0,
@@ -378,10 +439,21 @@ export default {
           skills2: true
         }
       },
-      cvData: this.defaultCvData || defaultCvData
+      cvData: this.defaultCvData || defaultCvData,
+      showPaywallModal: false,
+      canDownloadFreePdf: false,
+      isDownloadingFreePdf: false,
+      isDownloadingStandardPdf: false,
+      isLoadingCheckout: false
     }
   },
   computed: {
+    isDownloading() {
+      return this.isDownloadingFreePdf || this.isDownloadingStandardPdf
+    },
+    showWatermark() {
+      return this.isDownloadingFreePdf
+    },
     fontClass() {
       return {
         'poppins': this.settings.typography === 'poppins',
@@ -420,6 +492,16 @@ export default {
         || this.settings.sectionVisibility.skills1
         || this.settings.sectionVisibility.skills2
       )
+    },
+    facebookShareUrl() {
+      return `https://www.facebook.com/sharer/sharer.php?u=https://cvwizard.online/`
+    },
+    twitterShareUrl() {
+      const text = `Making a CV can be tough, but this website makes it easy and free! No sign-up required, just check it out!\n\n🧙✨ https://cvwizard.online/\n\n#cv #resumetips #resumewriting #jobsearch #jobhunt #jobtips #jobseekers #jobs #career #careeradvice`
+      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`
+    },
+    linkedInShareUrl() {
+      return `https://www.linkedin.com/shareArticle?mini=true&url=https://cvwizard.online/`
     }
   },
   watch: {
@@ -487,6 +569,79 @@ export default {
     computeCvFormat() {
       this.cvHeight = this.$refs.cv.clientHeight
       this.pageMarkers = Array(Math.floor(this.pageCount)).fill(0)
+    },
+    openShareWindow(url, title, w, h) {
+      const left = screen.width / 2 - w / 2;
+      const top = screen.height / 2 - h / 2;
+      window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left)
+      window.setTimeout(() => {
+        this.canDownloadFreePdf = true
+      }, 1000)
+    },
+    async buyNow() {
+      this.isLoadingCheckout = true
+
+      this.isDownloadingStandardPdf = true
+      let pdfFile = null
+      const self = this
+      setTimeout(async () => {
+        pdfFile = await self.downloadPdf()
+        self.isDownloadingStandardPdf = false
+
+        const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}.pdf`, pdfFile)
+        const response = await this.$axios.$post('/api/checkout', {
+          cv_download_url: pdfUrl
+        })
+        window.location.href = response.url
+
+        this.isLoadingCheckout = false
+      }, 500)
+    },
+    downloadPdf(saveFile = false) {
+      if (process.client) {
+        const doc = new jsPDF({
+          orientation: 'p',
+          unit: 'px',
+          format: 'a4',
+          hotfixes: ['px_scaling']
+        })
+
+        return html2canvas(document.querySelector('#cv'), { scale: 1.1 }).then((canvas) => {
+          const imgWidth = doc.internal.pageSize.getWidth()
+          const pageHeight = doc.internal.pageSize.getHeight()
+          const imgHeight = (canvas.height * imgWidth) / canvas.width
+          let heightLeft = imgHeight
+          let position = 0
+          heightLeft -= pageHeight
+          doc.addImage(canvas.toDataURL('image/jpeg', 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
+          while (heightLeft >= 0) {
+            position = heightLeft - imgHeight
+            doc.addPage()
+            doc.addImage(canvas.toDataURL('image/jpeg', 1), 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST')
+            heightLeft -= pageHeight
+          }
+
+          if (saveFile) {
+            doc.save('cv.pdf')
+          } else {
+            return doc.output('blob')
+          }
+        })
+      }
+    },
+    downloadFreePdf() {
+      this.isDownloadingFreePdf = true
+      const self = this
+      setTimeout(() => {
+        self.downloadPdf(true)
+        self.isDownloadingFreePdf = false
+        self.showPaywallModal = false
+        document.body.classList.remove('modal-open')
+      }, 500)
+    },
+    openPaywallModal() {
+      document.body.classList.add('modal-open')
+      this.showPaywallModal = true
     }
   },
   mounted() {

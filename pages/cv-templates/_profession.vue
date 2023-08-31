@@ -5,7 +5,7 @@
       <p class="sm:text-center text-xl">This sample CV template helps you to land your next job.</p>
     </section>
     <section class="mb-12">
-      <CVBuilder :show-toolbar="true" :is-downloading="isDownloading" :show-watermark="showWatermark" :default-cv-data="cvData" />
+      <CVBuilder :show-toolbar="true" :default-cv-data="cvData" />
     </section>
     <FaqSection :keyword="`${jobTitle} CV`" />
   </article>
@@ -19,7 +19,6 @@ export default {
       title: `${this.jobTitle} CV Template - cvwizard`
     }
   },
-  props: ['isDownloading', 'showWatermark'],
   asyncData({ redirect, route }) {
     const profession = route.params.profession
     let cvData = null
