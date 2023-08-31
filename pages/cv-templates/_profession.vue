@@ -2,7 +2,7 @@
   <article class="page-content cv-page">
     <section class="mb-8 md:mb-12">
       <h1 class="text-purple-brand sm:text-center mb-4">{{ jobTitle }} CV Template</h1>
-      <p class="sm:text-center text-xl">This sample CV template helps you to land your next job.</p>
+      <p class="sm:text-center text-xl">This sample CV template helps you to land your next job. You'll get the best user experience by visiting this website on a large device.</p>
     </section>
     <section class="mb-12">
       <CVBuilder :show-toolbar="true" :default-cv-data="cvData" />

@@ -2,7 +2,7 @@
   <article class="page-content cv-page">
     <section class="mb-8 md:mb-12">
       <h1 class="text-purple-brand sm:text-center mb-4">The easiest way to create a CV 🧙‍♂️</h1>
-      <p class="sm:text-center text-xl">cvwizard is a free, easy-to-use CV Builder to create your CV online.</p>
+      <p class="sm:text-center text-xl">cvwizard is a free, easy-to-use CV Builder to create your CV online. You'll get the best user experience by visiting this website on a large device.</p>
     </section>
     <section class="mb-14">
       <CVBuilder :show-toolbar="true" />
