@@ -4,10 +4,11 @@
       <header>
         <div class="px-4 pt-4 pb-8 md:p-8 flex items-center justify-between">
           <div>
-            <nuxt-link to="/"><img class="w-20 h-auto" src="@/assets/images/logo.png" /></nuxt-link>
+            <nuxt-link to="/"><img class="w-16 sm:w-20 h-auto" src="@/assets/images/logo.png" /></nuxt-link>
           </div>
-          <div class="flex items-center space-x-12 text-xl">
-            <nuxt-link to="/cv-templates">📄 Free CV Templates</nuxt-link>
+          <div class="flex items-center space-x-6 sm:space-x-8 sm:text-xl">
+            <nuxt-link to="/">✏️ CV Builder</nuxt-link>
+            <nuxt-link to="/cv-templates">📄 CV Templates</nuxt-link>
           </div>
         </div>
       </header>

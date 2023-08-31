@@ -52,6 +52,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/google-gtag',
     '@nuxtjs/sitemap',
+    '@nuxtjs/toast',
     [
       '@nuxtjs/firebase',
       {
@@ -108,6 +109,12 @@ export default {
   // Axios Configuration
   axios: {
     baseURL: '/'
+  },
+
+  // Toast Configuration
+  toast: {
+    position: 'top-center',
+    duration: 2000
   },
 
   // Server Middleware Configuration

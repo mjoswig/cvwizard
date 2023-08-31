@@ -2,14 +2,14 @@
   <div>
     <div v-show="showToolbar" class="mb-8 w-full">
       <div class="bg-gray-700 font-bold text-center rounded-md grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 py-4" style="max-width: 21cm;">
-        <div>
+        <div class="flex flex-col justify-end">
           <div class="flex justify-center">
             <div class="h-8 w-8 cursor-pointer rounded-full mb-2" :style="{ 'background-color': settings.color.hex }" @click="openColorPicker"></div>
           </div>
           <span class="uppercase text-white">Color</span>
         </div>
-        <div>
-          <select class="block mb-1 p-2 w-full" v-model="settings.typography">
+        <div class="flex flex-col justify-end">
+          <select class="block mb-1 p-2 w-full mb-2" v-model="settings.typography">
             <option value="fira-sans">Fira Sans</option>
             <option value="inconsolata">Inconsolata</option>
             <option value="karla">Karla</option>
@@ -20,7 +20,7 @@
           </select>
           <span class="uppercase text-white">Typography</span>
         </div>
-        <div>
+        <div class="flex flex-col justify-end">
           <div>
             <span class="cursor-default" :class="{ 'inactive-text-size-option': settings.textSize !== 'small' }" :style="{ 'color': settings.textSize === 'small' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'small'">A</span>
             <span class="cursor-default text-2xl" :class="{ 'inactive-text-size-option': settings.textSize !== 'medium' }" :style="{ 'color': settings.textSize === 'medium' ? settings.color.hex : '#a1a1aa' }" @click="settings.textSize = 'medium'">A</span>
@@ -28,7 +28,7 @@
           </div>
           <span class="uppercase text-white">Text size</span>
         </div>
-        <div>
+        <div class="flex flex-col justify-end">
           <div class="flex justify-center text-white mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-grid-1x2-fill" viewBox="0 0 16 16" @click="openSectionManagement">
               <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5z"/>
@@ -36,7 +36,7 @@
           </div>
           <span class="uppercase text-white">Sections</span>
         </div>
-        <div>
+        <div class="flex flex-col justify-end">
           <div class="flex justify-center text-white mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="cursor-pointer text-gray-400 hover:text-white bi bi-save" viewBox="0 0 16 16" @click="saveProgress">
               <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
@@ -44,7 +44,7 @@
           </div>
           <span class="uppercase text-white">Save</span>
         </div>
-        <div>
+        <div class="flex flex-col justify-end">
           <div class="flex justify-center text-white mb-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#f0abfc" class="cursor-pointer bi bi-filetype-pdf" viewBox="0 0 16 16" @click="openPaywallModal">
               <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
@@ -439,7 +439,7 @@ export default {
           skills2: true
         }
       },
-      cvData: this.defaultCvData || defaultCvData,
+      cvData: this.getCvData(),
       showPaywallModal: false,
       canDownloadFreePdf: false,
       isDownloadingFreePdf: false,
@@ -513,6 +513,13 @@ export default {
     }
   },
   methods: {
+    getCvData() {
+      if (this.$store.state.cvData && this.$route.path === '/') {
+        return JSON.parse(JSON.stringify(this.$store.state.cvData))
+      }
+
+      return this.defaultCvData || defaultCvData
+    },
     openColorPicker() {
       document.body.classList.add('modal-open')
       this.showColorPicker = true
@@ -644,7 +651,8 @@ export default {
       this.showPaywallModal = true
     },
     saveProgress() {
-      // @TODO: save current cv data via vuex
+      this.$store.commit('SET_CV_DATA', this.cvData)
+      this.$toast.success('Saved progress in local storage')
     }
   },
   mounted() {
