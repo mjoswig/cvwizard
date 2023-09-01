@@ -349,11 +349,11 @@
         </div>
       </div>
     </Modal>
-    <Modal v-show="showPaywallModal" max-width="750px" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showPaywallModal = false">
-      <div class="grid md:grid-cols-2 gap-8">
+    <Modal v-show="showPaywallModal" max-width="450px" :hide-confirmation-button="true" cancellation-button-label="Close" @cancel="showPaywallModal = false">
+      <div class="grid grid-cols gap-8">
         <div>
           <b class="block text-gray-500 text-3xl mb-4">Free Download</b>
-          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs <b>with watermark</b>.</p>
+          <p class="text-lg text-gray-500 mb-2">cvwizard offers free CVs to job seekers who need the most help.</p>
           <p class="text-lg text-gray-500 mb-2">Share on social media to unlock the free download:</p>
           <div class="relative text-lg">
             <div v-show="!canDownloadFreePdf" class="download-lock absolute h-full w-full bg-gray-100 opacity-50"></div>
@@ -378,24 +378,12 @@
             </a>
           </div>
         </div>
-        <div>
-          <b class="block text-purple-brand text-3xl mb-2">Standard Download</b>
-          <span class="font-bold inline-block mb-4 text-3xl"><span class="text-xl" style="margin-right: 4px;">$</span>7<sup class="text-lg">.95</sup><span class="font-normal text-base"> per download</span></span>
-          <ul class="text-lg mb-5">
-            <li>✅ No watermark</li>
-          </ul>
-          <p class="text-gray-500 text-sm mb-6">You'll be redirected to a download page after payment is complete.</p>
-          <div class="flex justify-center md:justify-start">
-            <Btn class="text-lg w-full md:w-max" :is-loading="isLoadingCheckout" @click="buyNow">Buy Now</Btn>
-          </div>
-        </div>
       </div>
     </Modal>
   </div>
 </template>
 
 <script>
-import { v4 as uuidv4 } from 'uuid'
 import{ jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
 import defaultCvData from '@/assets/json/cv-data/default.json'
@@ -452,7 +440,7 @@ export default {
       return this.isDownloadingFreePdf || this.isDownloadingStandardPdf
     },
     showWatermark() {
-      return this.isDownloadingFreePdf
+      return false
     },
     fontClass() {
       return {
@@ -578,33 +566,12 @@ export default {
       this.pageMarkers = Array(Math.floor(this.pageCount)).fill(0)
     },
     openShareWindow(url, title, w, h) {
-      this.sendTelegramNotification(`New click on "${title}"`)
       const left = screen.width / 2 - w / 2;
       const top = screen.height / 2 - h / 2;
       window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left)
       window.setTimeout(() => {
         this.canDownloadFreePdf = true
       }, 1000)
-    },
-    async buyNow() {
-      this.sendTelegramNotification('New click on "Buy Now"')
-      this.isLoadingCheckout = true
-
-      this.isDownloadingStandardPdf = true
-      let pdfFile = null
-      const self = this
-      setTimeout(async () => {
-        pdfFile = await self.downloadPdf()
-        self.isDownloadingStandardPdf = false
-
-        const pdfUrl = await this.$firebaseStorage.write(`/cv-${uuidv4()}.pdf`, pdfFile)
-        const response = await this.$axios.$post('/api/checkout', {
-          cv_download_url: pdfUrl
-        })
-        window.location.href = response.url
-
-        this.isLoadingCheckout = false
-      }, 500)
     },
     downloadPdf(saveFile = false) {
       if (process.client) {
@@ -631,10 +598,8 @@ export default {
           }
 
           if (saveFile) {
-            this.sendTelegramNotification('Free PDF generated')
             doc.save('cv.pdf')
           } else {
-            this.sendTelegramNotification('Paid PDF generated')
             return doc.output('blob')
           }
         })
@@ -653,17 +618,10 @@ export default {
     openPaywallModal() {
       document.body.classList.add('modal-open')
       this.showPaywallModal = true
-      this.sendTelegramNotification('New click on "Download"')
     },
     saveProgress() {
       this.$store.commit('SET_CV_DATA', this.cvData)
       this.$toast.success('Saved progress in local storage')
-      this.sendTelegramNotification('New click on "Save"')
-    },
-    async sendTelegramNotification(event) {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
-      const text = `${event}\n\nTimezone: ${tz}`
-      await this.$axios.$post(`https://api.telegram.org/bot${process.env.telegramBotApiKey}/sendMessage?chat_id=${process.env.telegramBotChatId}&text=${encodeURIComponent(text)}`)
     }
   },
   mounted() {

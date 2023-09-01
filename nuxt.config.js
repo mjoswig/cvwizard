@@ -32,7 +32,6 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/firebase-storage' },
     { src: '@/plugins/vue-color', mode: 'client' },
     { src: '@/plugins/vuex-persist', mode: 'client' }
   ],
@@ -49,27 +48,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios',
     '@nuxtjs/google-gtag',
     '@nuxtjs/sitemap',
-    '@nuxtjs/toast',
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: process.env.FIREBASE_API_KEY,
-          authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-          projectId: process.env.FIREBASE_PROJECT_ID,
-          storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-          messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-          appId: process.env.FIREBASE_APP_ID,
-          measurementId: process.env.FIREBASE_MEASUREMENT_ID
-        },
-        services: {
-          storage: true
-        }
-      }
-    ]
+    '@nuxtjs/toast'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -106,25 +87,9 @@ export default {
     }
   },
 
-  // Axios Configuration
-  axios: {
-    baseURL: '/'
-  },
-
-  // Environment Configuration
-  env: {
-    telegramBotApiKey: process.env.TELEGRAM_BOT_API_KEY || null,
-    telegramBotChatId: process.env.TELEGRAM_BOT_CHAT_ID || null
-  },
-
   // Toast Configuration
   toast: {
     position: 'top-center',
     duration: 2000
-  },
-
-  // Server Middleware Configuration
-  serverMiddleware: [
-    { path: '/', handler: '~/api/index.js' }
-  ]
+  }
 }
