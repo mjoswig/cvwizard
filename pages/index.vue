@@ -10,9 +10,6 @@
     <section class="mb-12">
       <h2 class="sm:text-center mb-4">The best free CV Builder in {{ currentYear }}</h2>
       <p class="sm:text-center text-lg mb-6">Our CV Maker is designed to help you craft the perfect CV, no matter what stage of your career you're in. With a range of powerful features and a user-friendly interface, you'll be able to create a standout CV in just a few minutes.</p>
-      <div class="flex sm:justify-center w-full mb-12">
-        <a href="https://www.producthunt.com/posts/cvwizard?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-cvwizard" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=410371&theme=light" alt="cvwizard - The&#0032;easiest&#0032;way&#0032;to&#0032;create&#0032;a&#0032;CV | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-      </div>
       <div class="grid md:grid-cols-2 gap-8">
         <div>
           <h3 class="text-gray-500 mb-2">No sign-up required</h3>

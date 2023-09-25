@@ -17,8 +17,8 @@ export default {
       { hid: 'description', name: 'description', content: 'Save time and effort with cvwizard, the best professional Resume Maker & CV Builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
       { hid: 'og:title', property: 'og:title', content: 'cvwizard - Free CV Builder' },
       { hid: 'og:description', property: 'og:description', content: 'Save time and effort with cvwizard, the best professional Resume Maker & CV Builder online. Impress recruiters with a modern PDF resume template and get the job you want.' },
-      { hid: 'og-image', property: 'og:image', content: 'https://cvwizard.online/images/og-image.png' },
-      { hid: 'twitter-image', property: 'twitter:image', content: 'https://cvwizard.online/images/og-image.png' },
+      { hid: 'og-image', property: 'og:image', content: 'https://cvwizard.netlify.app/images/og-image.png' },
+      { hid: 'twitter-image', property: 'twitter:image', content: 'https://cvwizard.netlify.app/images/og-image.png' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -48,8 +48,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/google-gtag',
-    '@nuxtjs/sitemap',
     '@nuxtjs/toast'
   ],
 
@@ -67,23 +65,6 @@ export default {
       Karla: true,
       'Fira+Sans': true,
       'Saira+Semi+Condensed': true
-    }
-  },
-
-  // Google Analytics Configuration
-  'google-gtag': {
-    id: 'G-SLD1FGYGSZ'
-  },
-
-  // Sitemap Configuration
-  sitemap: {
-    hostname: 'https://cvwizard.online',
-    routes: async () => {
-      const fs = require('fs')
-      let files = fs.readdirSync('./assets/json/cv-data')
-      files = files.filter(file => file !== 'default.json')
-      let routes = files.map(file => `/cv-templates/${file.split('.json')[0]}`)
-      return routes
     }
   },
 

@@ -60,7 +60,7 @@
           <span class="absolute bottom-1 left-1 text-gray-400 text-xs">Please add 5-6 line breaks to separate pages</span>
         </div>
         <span v-show="showWatermark" class="absolute top-8 right-8 font-bold text-sm text-right uppercase w-full" style="margin-left: -1cm;">
-          Made for free at www.cvwizard.online
+          Made for free at cvwizard.netlify.app
         </span>
         <div class="flex items-center w-full">
           <div class="mr-8" style="width: 7cm;" v-show="settings.sectionVisibility.picture">
@@ -482,14 +482,14 @@ export default {
       )
     },
     facebookShareUrl() {
-      return `https://www.facebook.com/sharer/sharer.php?u=https://cvwizard.online/`
+      return `https://www.facebook.com/sharer/sharer.php?u=https://cvwizard.netlify.app/`
     },
     twitterShareUrl() {
-      const text = `Making a CV can be tough, but this website makes it easy and free! No sign-up required, just check it out!\n\n🧙✨ https://cvwizard.online/\n\n#cv #resumetips #resumewriting #jobsearch #jobhunt #jobtips #jobseekers #jobs #career #careeradvice`
+      const text = `Making a CV can be tough, but this website makes it easy and free! No sign-up required, just check it out!\n\n🧙✨ https://cvwizard.netlify.app/\n\n#cv #resumetips #resumewriting #jobsearch #jobhunt #jobtips #jobseekers #jobs #career #careeradvice`
       return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`
     },
     linkedInShareUrl() {
-      return `https://www.linkedin.com/shareArticle?mini=true&url=https://cvwizard.online/`
+      return `https://www.linkedin.com/shareArticle?mini=true&url=https://cvwizard.netlify.app/`
     }
   },
   watch: {
