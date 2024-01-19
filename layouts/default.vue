@@ -16,22 +16,11 @@
         <nuxt />
       </main>
       <footer class="flex flex-col items-center px-4 pb-4 md:px-8 md:pb-8 pt-6 text-sm">
-        <p>&copy; {{ copyrightYear }} cvwizard. All rights reserved.</p>
+        <p>&copy; cvwizard. All rights reserved.</p>
       </footer>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  computed: {
-    copyrightYear() {
-      return new Date().getFullYear()
-    }
-  }
-}
-</script>
-
 
 <style lang="postcss">
 html {
