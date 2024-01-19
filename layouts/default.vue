@@ -26,9 +26,7 @@
 export default {
   computed: {
     copyrightYear() {
-      const year = new Date().getFullYear()
-      if (year === 2023) return year
-      return `2023-${year}`
+      return new Date().getFullYear()
     }
   }
 }
