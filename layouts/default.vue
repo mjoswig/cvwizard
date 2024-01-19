@@ -16,7 +16,7 @@
         <nuxt />
       </main>
       <footer class="flex flex-col items-center px-4 pb-4 md:px-8 md:pb-8 pt-6 text-sm">
-        <p>&copy; cvwizard. All rights reserved.</p>
+        <p>&copy; cvwizard – made by <a href="https://joswigsolutions.com/" target="_blank">Joswig Solutions</a></p>
       </footer>
     </div>
   </div>
